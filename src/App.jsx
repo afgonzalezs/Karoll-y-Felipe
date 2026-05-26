@@ -7,7 +7,7 @@ import Countdown from "./components/Countdown";
 import MapView from "./components/MapView";
 import PinterestLink from "./components/PinterestLink";
 import { db } from "./firebase";
-import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, setDoc, deleteDoc, getDoc } from "firebase/firestore";
 
 const c = siteContent;
 
@@ -39,10 +39,14 @@ function Nav() {
   );
 }
 
-function Lightbox({ photos, startIndex, onClose }) {
+function Lightbox({ photos, startIndex, invitado, onClose }) {
   const [index, setIndex] = useState(startIndex);
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
   const prev = () => setIndex(i => (i - 1 + photos.length) % photos.length);
   const next = () => setIndex(i => (i + 1) % photos.length);
+
+  const photoId = (url) => btoa(encodeURIComponent(url)).replace(/[^a-zA-Z0-9]/g, "").slice(0, 40);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -53,6 +57,27 @@ function Lightbox({ photos, startIndex, onClose }) {
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [onClose, photos.length]);
+
+  useEffect(() => {
+    const pid = photoId(photos[index]);
+    const q = query(collection(db, "reactions"), orderBy("timestamp", "desc"));
+    const unsub = onSnapshot(collection(db, `reactions_${pid}`), (snap) => {
+      setLikeCount(snap.size);
+      setLiked(snap.docs.some(d => d.id === invitado));
+    });
+    return () => unsub();
+  }, [index, photos, invitado]);
+
+  const toggleLike = async (e) => {
+    e.stopPropagation();
+    const pid = photoId(photos[index]);
+    const ref = doc(db, `reactions_${pid}`, invitado);
+    if (liked) {
+      await deleteDoc(ref);
+    } else {
+      await setDoc(ref, { invitado, photoUrl: photos[index], timestamp: serverTimestamp() });
+    }
+  };
 
   return (
     <div className="lightbox-overlay" onClick={onClose}>
@@ -65,6 +90,9 @@ function Lightbox({ photos, startIndex, onClose }) {
         onClick={e => e.stopPropagation()}
       />
       <button className="lightbox-nav lightbox-next" onClick={e => { e.stopPropagation(); next(); }} aria-label="Siguiente">&#8250;</button>
+      <button className={`lightbox-like${liked ? " liked" : ""}`} onClick={toggleLike} aria-label="Me gusta">
+        {liked ? "❤️" : "🤍"} {likeCount > 0 && <span>{likeCount}</span>}
+      </button>
       <span className="lightbox-counter">{index + 1} / {photos.length}</span>
     </div>
   );
@@ -517,7 +545,7 @@ export default function App() {
         </section>
       </div>
 
-      {lightbox && <Lightbox photos={lightbox.photos} startIndex={lightbox.index} onClose={() => setLightbox(null)} />}
+      {lightbox && <Lightbox photos={lightbox.photos} startIndex={lightbox.index} invitado={invitedName} onClose={() => setLightbox(null)} />}
     </>
   );
 }

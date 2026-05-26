@@ -1049,6 +1049,31 @@ h2 {
   color: rgba(255, 255, 255, 0.45);
   z-index: 1001;
 }
+.lightbox-like {
+  position: fixed;
+  bottom: 3.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: transform 0.15s, background 0.2s;
+  backdrop-filter: blur(4px);
+}
+.lightbox-like span {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.8);
+  font-family: "Montserrat", sans-serif;
+}
+.lightbox-like:hover { background: rgba(255,255,255,0.2); }
+.lightbox-like.liked { transform: translateX(-50%) scale(1.1); }
 
 /* ─────────────────────────────────────────────
    RESPONSIVE
