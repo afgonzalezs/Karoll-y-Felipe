@@ -16,8 +16,8 @@ export default function EnvelopeIntro({
         <p className="env-guest-name">{invitedName}</p>
 
         <div className="envelope-img-wrapper">
-          <img src={import.meta.env.BASE_URL+"Sobre.png"} className="envelope-closed-img" alt="" />
-          <img src={import.meta.env.BASE_URL+"Sobre abierto.png"} className="envelope-open-img" alt="" />
+          <img src={import.meta.env.BASE_URL+"envelope.png"} className="envelope-closed-img" alt="" />
+          <img src={import.meta.env.BASE_URL+"envelope-open.png"} className="envelope-open-img" alt="" />
           <button
             className="nombres-btn"
             type="button"
