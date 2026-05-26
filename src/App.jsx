@@ -132,9 +132,9 @@ export default function App() {
       )}
 
       {/* Slides fijas en el fondo — se ven detrás de la hero section */}
-      <div className="hero-slide" style={{ backgroundImage: "url('/photos/proposal.jpg')" }} />
-      <div className="hero-slide" style={{ backgroundImage: "url('/photos/kiss.jpg')", backgroundPosition: "center 30%" }} />
-      <div className="hero-slide" style={{ backgroundImage: "url('/photos/engaged.jpg')", backgroundPosition: "center top" }} />
+      <div className="hero-slide" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}photos/proposal.jpg')` }} />
+      <div className="hero-slide" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}photos/kiss.jpg')`, backgroundPosition: "center 30%" }} />
+      <div className="hero-slide" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}photos/engaged.jpg')`, backgroundPosition: "center top" }} />
 
       <div className={invitationClass}>
         <Nav />
@@ -167,7 +167,7 @@ export default function App() {
 
         {/* ── HISTORIA (bold section morado) ── */}
         <section className="bold-section">
-          <img src="/photos/Copia_IMG_7637.png" className="bold-photo-strip" alt="" />
+          <img src={import.meta.env.BASE_URL+"photos/Copia_IMG_7637.png"} className="bold-photo-strip" alt="" />
           <div className="bold-strip-header">
             <span className="bold-strip-title">Nuestra historia</span>
             <a href="#rsvp" className="bold-strip-link">Confirmar asistencia &rarr;</a>
@@ -183,8 +183,8 @@ export default function App() {
             ))}
           </div>
           <div className="story-photos reveal d3">
-            <img src="/photos/selfie.jpg"  className="story-img" alt="" loading="lazy" />
-            <img src="/photos/embrace.jpg" className="story-img tall" alt="" loading="lazy" />
+            <img src={import.meta.env.BASE_URL+"photos/selfie.jpg"}  className="story-img" alt="" loading="lazy" />
+            <img src={import.meta.env.BASE_URL+"photos/embrace.jpg"} className="story-img tall" alt="" loading="lazy" />
           </div>
         </section>
 
@@ -202,54 +202,54 @@ export default function App() {
           el.onmouseup = () => { isDown = false; };
           el.onmousemove = e => { if (!isDown) return; if (Math.abs(e.pageX - el.offsetLeft - startX) > 5) el._dragged = true; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5; };
         }} onClick={openLightbox}>
-          <img src="/photos/fykfreskq.jpeg"    alt="" loading="lazy" />
-          <img src="/photos/gradok.jpeg"        alt="" loading="lazy" />
-          <img src="/photos/nos_7371.png"       alt="" loading="lazy" />
-          <img src="/photos/nos_7508.png"       alt="" loading="lazy" />
-          <img src="/photos/nos_7573.png"       alt="" loading="lazy" />
-          <img src="/photos/nos_7575.png"       alt="" loading="lazy" />
-          <img src="/photos/nos_7580.png"       alt="" loading="lazy" />
-          <img src="/photos/nos_7581.png"       alt="" loading="lazy" />
-          <img src="/photos/nos_7582.png"       alt="" loading="lazy" />
-          <img src="/photos/nos_7618.png"       alt="" loading="lazy" />
-          <img src="/photos/nos_7637.png"       alt="" loading="lazy" />
-          <img src="/photos/nos_7648.png"       alt="" loading="lazy" />
-          <img src="/photos/nos_copia_7573.png" alt="" loading="lazy" />
-          <img src="/photos/nos_wa01.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa02.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa03.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa04.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa05.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa06.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa07.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa08.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa09.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa10.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa11.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa12.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa13.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa14.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa15.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa16.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa17.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa18.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa19.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa20.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa21.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa22.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa23.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa24.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa25.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa26.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa27.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa28.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa29.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa30.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa31.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_wa32.jpeg"      alt="" loading="lazy" />
-          <img src="/photos/nos_dsc0005.jpg"    alt="" loading="lazy" />
-          <img src="/photos/nos_img20220308.jpg" alt="" loading="lazy" />
-          <img src="/photos/nos_img20220320.jpg" alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fykfreskq.jpeg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/gradok.jpeg"}        alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_7371.png"}       alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_7508.png"}       alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_7573.png"}       alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_7575.png"}       alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_7580.png"}       alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_7581.png"}       alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_7582.png"}       alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_7618.png"}       alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_7637.png"}       alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_7648.png"}       alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_copia_7573.png"} alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa01.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa02.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa03.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa04.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa05.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa06.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa07.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa08.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa09.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa10.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa11.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa12.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa13.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa14.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa15.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa16.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa17.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa18.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa19.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa20.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa21.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa22.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa23.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa24.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa25.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa26.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa27.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa28.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa29.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa30.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa31.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_wa32.jpeg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_dsc0005.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_img20220308.jpg"} alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/nos_img20220320.jpg"} alt="" loading="lazy" />
         </div>
 
         {/* ── FAMILIA Y AMIGOS + PHOTO CAROUSEL ── */}
@@ -266,85 +266,85 @@ export default function App() {
           el.onmouseup = () => { isDown = false; };
           el.onmousemove = e => { if (!isDown) return; if (Math.abs(e.pageX - el.offsetLeft - startX) > 5) el._dragged = true; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5; };
         }} onClick={openLightbox}>
-          <img src="/photos/fam_a0.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_a1.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_a2.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_a20.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a21.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a22.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a24.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a26.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a27.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a28.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a29.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a3.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_a32.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a36.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a38.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a39.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a4.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_a40.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a41.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a42.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a43.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a44.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a45.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a46.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a47.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a48.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a49.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a5.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_a50.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a51.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a52.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a53.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_a6.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_a8.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_a9.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_every.jpg"  alt="" loading="lazy" />
-          <img src="/photos/fam_every2.jpg" alt="" loading="lazy" />
-          <img src="/photos/fam_f.jpg"      alt="" loading="lazy" />
-          <img src="/photos/fam_f01.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f1.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_f17.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f19.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f2.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_f20.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_t7.jpg"      alt="" loading="lazy" />
-          <img src="/photos/fam_t9.jpg"      alt="" loading="lazy" />
-          <img src="/photos/fam_every3.jpeg" alt="" loading="lazy" />
-          <img src="/photos/fam_f8.jpeg"     alt="" loading="lazy" />
-          <img src="/photos/fam_f9.jpeg"     alt="" loading="lazy" />
-          <img src="/photos/fam_f10.jpeg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f12.jpeg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f13.jpeg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f21.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f22.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f23.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f24.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f25.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f26.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f27.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f3.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_f30.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f31.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f33.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f35.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f36.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f39.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f4.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_f40.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f45.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f46.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f47.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f48.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f49.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_f5.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_f6.jpg"     alt="" loading="lazy" />
-          <img src="/photos/fam_f99.jpg"    alt="" loading="lazy" />
-          <img src="/photos/fam_t.jpg"      alt="" loading="lazy" />
-          <img src="/photos/fam_t10.jpeg"   alt="" loading="lazy" />
-          <img src="/photos/fam_t11.jpeg"   alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a0.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a1.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a2.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a20.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a21.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a22.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a24.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a26.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a27.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a28.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a29.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a3.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a32.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a36.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a38.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a39.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a4.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a40.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a41.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a42.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a43.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a44.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a45.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a46.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a47.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a48.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a49.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a5.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a50.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a51.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a52.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a53.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a6.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a8.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_a9.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_every.jpg"}  alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_every2.jpg"} alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f.jpg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f01.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f1.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f17.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f19.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f2.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f20.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_t7.jpg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_t9.jpg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_every3.jpeg"} alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f8.jpeg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f9.jpeg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f10.jpeg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f12.jpeg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f13.jpeg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f21.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f22.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f23.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f24.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f25.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f26.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f27.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f3.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f30.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f31.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f33.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f35.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f36.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f39.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f4.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f40.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f45.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f46.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f47.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f48.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f49.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f5.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f6.jpg"}     alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_f99.jpg"}    alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_t.jpg"}      alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_t10.jpeg"}   alt="" loading="lazy" />
+          <img src={import.meta.env.BASE_URL+"photos/fam_t11.jpeg"}   alt="" loading="lazy" />
           
         </div>
 
