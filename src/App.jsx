@@ -6,6 +6,8 @@ import EnvelopeIntro from "./components/EnvelopeIntro";
 import Countdown from "./components/Countdown";
 import MapView from "./components/MapView";
 import PinterestLink from "./components/PinterestLink";
+import { db } from "./firebase";
+import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "firebase/firestore";
 
 const c = siteContent;
 
@@ -72,6 +74,41 @@ export default function App() {
   const invitedName = useMemo(() => getInvitedName(), []);
   const { isUntying, isOpened, hideEnvelope, isAnimatingOpen, envelopeScreenClass, invitationClass, openInvitation } = useEnvelope();
   const [lightbox, setLightbox] = useState(null);
+
+  // RSVP form
+  const [nombre, setNombre] = useState(invitedName || "");
+  const [asiste, setAsiste] = useState("yes");
+  const [mensaje, setMensaje] = useState("");
+  const [rsvpStatus, setRsvpStatus] = useState("idle"); // idle | loading | success | error
+
+  const handleRsvp = async (e) => {
+    e.preventDefault();
+    if (!nombre.trim()) return;
+    setRsvpStatus("loading");
+    try {
+      await addDoc(collection(db, "rsvp"), {
+        nombre: nombre.trim(),
+        asiste: asiste === "yes",
+        mensaje: mensaje.trim(),
+        token: new URLSearchParams(window.location.search).get("invitado") || "",
+        timestamp: serverTimestamp(),
+      });
+      setRsvpStatus("success");
+    } catch {
+      setRsvpStatus("error");
+    }
+  };
+
+  // Mensajes en tiempo real
+  const [mensajes, setMensajes] = useState([]);
+  useEffect(() => {
+    const q = query(collection(db, "rsvp"), orderBy("timestamp", "desc"));
+    const unsub = onSnapshot(q, (snap) => {
+      setMensajes(snap.docs.map(d => ({ id: d.id, ...d.data() })).filter(m => m.mensaje));
+    });
+    return () => unsub();
+  }, []);
+
   const openLightbox = (e) => {
     if (e.currentTarget._dragged) return;
     const img = e.target.closest("img");
@@ -399,28 +436,72 @@ export default function App() {
           <span className="eyebrow reveal">¿Vas a estar?</span>
           <div className="divider center reveal d1" />
           <h2 className="reveal d1">Confirmar asistencia</h2>
-          <form className="rsvp-form reveal d2" onSubmit={e => e.preventDefault()}>
-            <div className="field">
-              <label>Nombre completo</label>
-              <input type="text" defaultValue={invitedName} placeholder="Tu nombre" />
+
+          {rsvpStatus === "success" ? (
+            <div className="rsvp-success reveal">
+              <p className="rsvp-success-icon">🤍</p>
+              <p className="rsvp-success-title">¡Gracias, {nombre}!</p>
+              <p className="rsvp-success-text">Tu confirmación quedó guardada. ¡Nos vemos pronto!</p>
             </div>
-            <div className="field">
-              <label>¿Asistirás?</label>
-              <select>
-                <option value="yes">Sí, allá estaré 🎉</option>
-                <option value="no">No podré ir</option>
-              </select>
-            </div>
-            <div className="field">
-              <label>Un mensaje para guardar por siempre</label>
-              <p style={{ fontSize: "0.8rem", color: "rgba(248,245,242,0.7)", lineHeight: 1.7, marginBottom: "0.6rem", textAlign: "left" }}>
-                Para esta nueva etapa tus palabras son muy valiosas para nosotros. Si quieres compartir un mensaje o un consejo, con mucho amor lo guardaremos para siempre. 🤍
-              </p>
-              <textarea rows={4} placeholder="Escribe aquí tu mensaje o consejo..." />
-            </div>
-            <button type="submit" className="btn-submit">Confirmar asistencia</button>
-          </form>
+          ) : (
+            <form className="rsvp-form reveal d2" onSubmit={handleRsvp}>
+              <div className="field">
+                <label>Nombre completo</label>
+                <input
+                  type="text"
+                  value={nombre}
+                  onChange={e => setNombre(e.target.value)}
+                  placeholder="Tu nombre"
+                  required
+                />
+              </div>
+              <div className="field">
+                <label>¿Asistirás?</label>
+                <select value={asiste} onChange={e => setAsiste(e.target.value)}>
+                  <option value="yes">Sí, allá estaré 🎉</option>
+                  <option value="no">No podré ir</option>
+                </select>
+              </div>
+              <div className="field">
+                <label>Un mensaje para guardar por siempre</label>
+                <p style={{ fontSize: "0.8rem", color: "rgba(248,245,242,0.7)", lineHeight: 1.7, marginBottom: "0.6rem", textAlign: "left" }}>
+                  Para esta nueva etapa tus palabras son muy valiosas para nosotros. Si quieres compartir un mensaje o un consejo, con mucho amor lo guardaremos para siempre. 🤍
+                </p>
+                <textarea
+                  rows={4}
+                  value={mensaje}
+                  onChange={e => setMensaje(e.target.value)}
+                  placeholder="Escribe aquí tu mensaje o consejo..."
+                />
+              </div>
+              {rsvpStatus === "error" && (
+                <p style={{ color: "#ff6b6b", fontSize: "0.8rem", marginBottom: "0.5rem" }}>
+                  Hubo un error, intenta de nuevo.
+                </p>
+              )}
+              <button type="submit" className="btn-submit" disabled={rsvpStatus === "loading"}>
+                {rsvpStatus === "loading" ? "Guardando..." : "Confirmar asistencia"}
+              </button>
+            </form>
+          )}
         </section>
+
+        {/* ── MURAL DE MENSAJES ── */}
+        {mensajes.length > 0 && (
+          <section className="section section-center section-dark">
+            <span className="eyebrow reveal">Sus palabras</span>
+            <div className="divider center reveal d1" />
+            <h2 className="reveal d1">Lo que nos dicen 🤍</h2>
+            <div className="mensajes-grid reveal d2">
+              {mensajes.map(m => (
+                <div key={m.id} className="mensaje-card">
+                  <p className="mensaje-texto">"{m.mensaje}"</p>
+                  <p className="mensaje-autor">— {m.nombre}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* ── FINAL ── */}
         <section className="final-section">
