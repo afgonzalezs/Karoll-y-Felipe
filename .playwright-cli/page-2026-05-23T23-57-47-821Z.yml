@@ -1,0 +1,104 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: Wedding invitation | 2025.10.12 読み込まれました
+    - generic [ref=e10]:
+      - generic [ref=e12]:
+        - paragraph [ref=e15]: We are pleased to announce that we will be holding our wedding ceremony on October 12, 2025 at the Tokyo Kudan Kaikan Terrace.We are making small but heartfelt preparations to express our gratitude to all of you who have supported us.We know you are busy, but we would be very happy if you could watch over our new start.
+        - link "Special Thanks 結婚式当日の 様子はこちら" [ref=e16] [cursor=pointer]:
+          - /url: /archive
+          - generic [ref=e17]:
+            - paragraph [ref=e20]:
+              - text: Special
+              - text: Thanks
+            - paragraph [ref=e22]:
+              - text: 結婚式当日の
+              - text: 様子はこちら
+      - generic [ref=e45]:
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - paragraph [ref=e51]:
+              - text: 皆様におかれましてはご清祥のこととお慶び申し上げます
+              - text: このたび 私たちは結婚式を挙げることになりました
+              - text: つきましては 日頃お世話になっている皆様にお集まりいただきささやかな披露宴を催したいと存じます
+              - text: ご多用中 誠に恐縮ではございますがご来臨の栄を賜りたく謹んでご案内申し上げます
+            - paragraph [ref=e52]:
+              - text: 謹
+              - text: 啓
+          - paragraph [ref=e53]: We are pleased to announce that we will be hosting a wedding. The place is Kudan Kaikan Terrace in Tokyo. It is early in the morning, but we are looking forward to seeing you all there.We are pleased to announce that we will be hosting a wedding. The place is Kudan Kaikan Terrace in Tokyo. It is early in the morning, but we are looking forward to seeing you all there.
+        - generic [ref=e79]:
+          - paragraph [ref=e80]: Yuuki
+          - paragraph [ref=e81]:
+            - text: 1995年生まれ広島県出身
+            - text: 大学卒業後大手ハウスメーカーに入社し営業職としてキャリアをスタート
+            - text: その後韓国へ語学留学し現地でピラティスに出会う
+            - text: 帰国後は都内のピラティススタジオに勤務しながら韓国語の通訳としても活動の幅を広げている
+        - generic [ref=e91]:
+          - paragraph [ref=e92]: Yoshihiro
+          - paragraph [ref=e93]:
+            - text: 1996年生まれ千葉県出身
+            - text: 高校卒業後、デザイン系の大学へ進学し
+            - text: 大学卒業後はWeb制作会社に入社しWebサイトのデザインやグラフィックデザイン業務にも従事
+      - generic [ref=e94]:
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - paragraph [ref=e100]: Day
+              - paragraph [ref=e101]: 日付
+            - paragraph [ref=e102]: 2025.10.12 Sun
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - paragraph [ref=e105]: Wedding Ceremony
+              - paragraph [ref=e106]: 挙式
+            - paragraph [ref=e107]: 10:00
+          - generic [ref=e108]:
+            - generic [ref=e109]:
+              - paragraph [ref=e110]: Reception
+              - paragraph [ref=e111]: 披露宴
+            - paragraph [ref=e112]: 11:00
+          - paragraph [ref=e113]: 受付は挙式後に行いますのでご出席の皆さまは直接挙式会場へお越しいただきますようお願いいたします
+        - generic [ref=e116]:
+          - generic [ref=e117]:
+            - paragraph [ref=e118]: Place
+            - paragraph [ref=e119]: 式場
+          - generic [ref=e120]:
+            - generic [ref=e122]:
+              - generic [ref=e123]:
+                - link "東京 九段会館 テラス" [ref=e124] [cursor=pointer]:
+                  - /url: https://www.tokyokudan.com/wedding/
+                  - paragraph [ref=e125]:
+                    - text: 東京
+                    - text: 九段会館
+                    - text: テラス
+                - paragraph [ref=e126]: 東京都千代田区九段南1丁目6番5号
+              - paragraph [ref=e127]:
+                - text: 東京メトロ 九段下駅（半蔵門線・東西線 4番出口）徒歩1分
+                - text: 都営地下鉄 九段下駅（新宿線 4番出口）徒歩1分
+            - link "アクセス情報はこちら" [ref=e129] [cursor=pointer]:
+              - /url: https://kudan-kaikan-terrace.jp/access/
+              - paragraph [ref=e130]: アクセス情報はこちら
+      - generic [ref=e133]:
+        - paragraph
+        - generic [ref=e136]:
+          - paragraph [ref=e137]: ご出欠について
+          - paragraph [ref=e139]:
+            - generic [ref=e140]:
+              - text: 誠に勝手ながら
+              - text: 2025年8月17日までに
+              - text: ご返答いただければ幸いに存じます
+        - generic [ref=e141]:
+          - paragraph [ref=e142]: Special Thanks
+          - generic [ref=e143]:
+            - paragraph [ref=e145]:
+              - text: 皆さまのおかげで
+              - text: 無事に式を終えることができました
+              - text: 当日の思い出を
+              - text: アーカイブページにまとめました
+              - text: お時間のある時に
+              - text: ぜひ覗いてみてください
+            - link "結婚式当日の様子はこちら" [ref=e146] [cursor=pointer]:
+              - /url: /archive
+              - paragraph [ref=e147]: 結婚式当日の様子はこちら
+        - paragraph [ref=e148]: © 2025 Nagano All Rights Reserved.
+  - link "Created in Studio.Design, Start your site in Studio.Design" [ref=e150] [cursor=pointer]:
+    - /url: https://studio.design/ja/?utm_source=/&utm_medium=STUDIO%20Banner&utm_campaign=STUDIO%20Banner
+    - img "Created in Studio.Design, Start your site in Studio.Design" [ref=e151]

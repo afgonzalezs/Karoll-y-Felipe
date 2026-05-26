@@ -1,0 +1,434 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - link "Ir al contenido":
+      - /url: "#"
+      - generic [ref=e8] [cursor=pointer]: Ir al contenido
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - link "Inicio de Pinterest" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e16]
+        - link "Explorar" [ref=e32] [cursor=pointer]:
+          - /url: /ideas
+          - generic [ref=e33]: Explorar
+      - generic [ref=e37]:
+        - generic:
+          - img "Ícono de búsqueda"
+        - generic [ref=e38]:
+          - combobox "Buscar" [ref=e39]
+          - generic:
+            - generic:
+              - generic:
+                - generic: Buscar por
+                - generic:
+                  - generic:
+                    - generic: mens outfits
+                    - generic: men fashion casual outfits
+                    - generic: business casual men
+                    - generic: mens casual outfits
+                    - generic: winter outfits men
+                    - generic: mens outfits
+      - generic [ref=e40]:
+        - button "Iniciar sesión" [ref=e42] [cursor=pointer]:
+          - generic [ref=e44]: Iniciar sesión
+        - button "Regístrate" [ref=e46] [cursor=pointer]:
+          - generic [ref=e48]: Regístrate
+        - button "Configuración" [ref=e51] [cursor=pointer]:
+          - img [ref=e54]
+  - main [ref=e57]:
+    - generic [ref=e60]:
+      - generic [ref=e62]:
+        - generic [ref=e64]:
+          - heading "Dress code civil wedding, for him 🤎" [level=1] [ref=e66]
+          - generic [ref=e72]:
+            - generic [ref=e73]: 6 Pines
+            - generic [ref=e74]: ·
+            - generic [ref=e75]: 2 min
+          - generic [ref=e77]:
+            - button "Karoll Susatama." [ref=e83] [cursor=pointer]:
+              - img [ref=e93]
+            - generic [ref=e96]:
+              - text: Por
+              - link "Karoll Susatama" [ref=e98] [cursor=pointer]:
+                - /url: /karollsusatama/
+                - generic [ref=e100]: Karoll Susatama
+        - generic "Compartir" [ref=e106]:
+          - button "Compartir" [ref=e107] [cursor=pointer]:
+            - img [ref=e110]
+      - generic [ref=e114]:
+        - generic [ref=e122]:
+          - generic [ref=e123]: Pines cargados para el tablero
+          - list [ref=e128]:
+            - listitem [ref=e129]:
+              - button "Tarjeta del Pin" [ref=e131] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e133]:
+                  - generic [ref=e135]:
+                    - generic [ref=e136]:
+                      - link "Layering outfits , winter ouftits for men , old money vibe Traje Para Boda Hombre, Trajes De Boda, Estilos De Ropa Para Hombre, Estilos De Moda Masculina, Estilos De Ropa, Ropa De Hombre, Trajes, Chicas, De Moda" [ref=e138]:
+                        - /url: /pin/604115737561357708/
+                        - img "Layering outfits , winter ouftits for men , old money vibe Traje Para Boda Hombre, Trajes De Boda, Estilos De Ropa Para Hombre, Estilos De Moda Masculina, Estilos De Ropa, Ropa De Hombre, Trajes, Chicas, De Moda" [ref=e148]
+                      - generic [ref=e149]:
+                        - generic [ref=e150]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e151]
+                          - button "Cerrar ventana modal" [ref=e153]:
+                            - img [ref=e156]
+                        - generic [ref=e162]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e163]:
+                            - link "Traje Para Boda Hombre" [ref=e167]:
+                              - /url: /ideas/traje-para-boda-hombre/924743115079/
+                            - link "Trajes De Boda" [ref=e171]:
+                              - /url: /ideas/trajes-de-boda/894595230806/
+                            - link "Estilos De Ropa Para Hombre" [ref=e175]:
+                              - /url: /ideas/estilos-de-ropa-para-hombre/956315851837/
+                            - link "Estilos De Moda Masculina" [ref=e179]:
+                              - /url: /ideas/estilos-de-moda-masculina/918192273784/
+                            - link "Estilos De Ropa" [ref=e183]:
+                              - /url: /ideas/estilos-de-ropa/932245556186/
+                            - link "Ropa De Hombre" [ref=e187]:
+                              - /url: /ideas/ropa-de-hombre/945017638132/
+                            - link "Trajes" [ref=e191]:
+                              - /url: /ideas/trajes/934351339466/
+                            - link "Chicas" [ref=e195]:
+                              - /url: /ideas/chicas/934817222299/
+                            - link "De Moda" [ref=e199]:
+                              - /url: /ideas/de-moda/933409414908/
+                    - generic [ref=e201]:
+                      - generic:
+                        - link "Layering outfits , winter ouftits for men , old money vibe Traje Para Boda Hombre, Trajes De Boda, Estilos De Ropa Para Hombre, Estilos De Moda Masculina, Estilos De Ropa, Ropa De Hombre, Trajes, Chicas, De Moda":
+                          - /url: /pin/604115737561357708/
+                      - generic [ref=e208]:
+                        - button "Layering outfits , winter ouftits for men , old money vibe" [ref=e210]:
+                          - generic [ref=e211]: Layering outfits , winter ouftits for men , old money vibe
+                        - generic [ref=e213]:
+                          - generic "Más acciones" [ref=e215]:
+                            - button "Más acciones" [ref=e216]:
+                              - img [ref=e219]
+                          - generic [ref=e221]:
+                            - generic [ref=e222]:
+                              - heading "Más sobre este Pin" [level=2] [ref=e223]
+                              - button "Cerrar ventana modal" [ref=e225]:
+                                - img [ref=e228]
+                            - generic [ref=e234]:
+                              - generic:
+                                - heading "Intereses relacionados" [level=3]
+                              - generic [ref=e235]:
+                                - link "Traje Para Boda Hombre" [ref=e239]:
+                                  - /url: /ideas/traje-para-boda-hombre/924743115079/
+                                - link "Trajes De Boda" [ref=e243]:
+                                  - /url: /ideas/trajes-de-boda/894595230806/
+                                - link "Estilos De Ropa Para Hombre" [ref=e247]:
+                                  - /url: /ideas/estilos-de-ropa-para-hombre/956315851837/
+                                - link "Estilos De Moda Masculina" [ref=e251]:
+                                  - /url: /ideas/estilos-de-moda-masculina/918192273784/
+                                - link "Estilos De Ropa" [ref=e255]:
+                                  - /url: /ideas/estilos-de-ropa/932245556186/
+                                - link "Ropa De Hombre" [ref=e259]:
+                                  - /url: /ideas/ropa-de-hombre/945017638132/
+                                - link "Trajes" [ref=e263]:
+                                  - /url: /ideas/trajes/934351339466/
+                                - link "Chicas" [ref=e267]:
+                                  - /url: /ideas/chicas/934817222299/
+                                - link "De Moda" [ref=e271]:
+                                  - /url: /ideas/de-moda/933409414908/
+            - listitem [ref=e272]:
+              - button "Tarjeta del Pin" [ref=e274] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e276]:
+                  - generic [ref=e278]:
+                    - generic [ref=e279]:
+                      - link "Men’s clothing essentials • Men’s minimal fashion • Men’s chic outfits • Timeless men’s looks • Modern men’s wardrobe • Outfit inspiration for stylish men" [ref=e281]:
+                        - /url: /pin/604115737561357715/
+                        - img "Men’s clothing essentials • Men’s minimal fashion • Men’s chic outfits • Timeless men’s looks • Modern men’s wardrobe • Outfit inspiration for stylish men" [ref=e291]
+                      - generic [ref=e292]:
+                        - generic [ref=e293]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e294]
+                          - button "Cerrar ventana modal" [ref=e296]:
+                            - img [ref=e299]
+                        - generic [ref=e305]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e306]:
+                            - link "Atuendos Para Hombres" [ref=e310]:
+                              - /url: /ideas/atuendos-para-hombres/925295809549/
+                            - link "Estilos Para Hombre" [ref=e314]:
+                              - /url: /ideas/estilos-para-hombre/959288498607/
+                            - link "Ropa Cool Para Hombre" [ref=e318]:
+                              - /url: /ideas/ropa-cool-para-hombre/898310476718/
+                            - link "Combinacion De Ropa Hombre" [ref=e322]:
+                              - /url: /ideas/combinacion-de-ropa-hombre/934694789729/
+                            - link "Ropa De Caballero" [ref=e326]:
+                              - /url: /ideas/ropa-de-caballero/894941690856/
+                            - link "Ropa Urbana Hombre" [ref=e330]:
+                              - /url: /ideas/ropa-urbana-hombre/940676662502/
+                            - link "Ropa Casual De Hombre" [ref=e334]:
+                              - /url: /ideas/ropa-casual-de-hombre/938955848974/
+                            - link "Combinaciones De Ropa" [ref=e338]:
+                              - /url: /ideas/combinaciones-de-ropa/949920427509/
+                            - link "Moda Ropa Hombre" [ref=e342]:
+                              - /url: /ideas/moda-ropa-hombre/943087014948/
+                    - generic [ref=e344]:
+                      - generic:
+                        - link "Men’s clothing essentials • Men’s minimal fashion • Men’s chic outfits • Timeless men’s looks • Modern men’s wardrobe • Outfit inspiration for stylish men":
+                          - /url: /pin/604115737561357715/
+                      - generic [ref=e351]:
+                        - button "Men’s fashion inspiration featuring smart casual looks, streetwear trends, and everyday outfit ideas for a stylish, confident appearance." [ref=e353]:
+                          - generic [ref=e354]: Men’s fashion inspiration featuring smart casual looks, streetwear trends, and everyday outfit ideas for a stylish, confident appearance.
+                        - generic [ref=e356]:
+                          - generic "Más acciones" [ref=e358]:
+                            - button "Más acciones" [ref=e359]:
+                              - img [ref=e362]
+                          - generic [ref=e364]:
+                            - generic [ref=e365]:
+                              - heading "Más sobre este Pin" [level=2] [ref=e366]
+                              - button "Cerrar ventana modal" [ref=e368]:
+                                - img [ref=e371]
+                            - generic [ref=e377]:
+                              - generic:
+                                - heading "Intereses relacionados" [level=3]
+                              - generic [ref=e378]:
+                                - link "Atuendos Para Hombres" [ref=e382]:
+                                  - /url: /ideas/atuendos-para-hombres/925295809549/
+                                - link "Estilos Para Hombre" [ref=e386]:
+                                  - /url: /ideas/estilos-para-hombre/959288498607/
+                                - link "Ropa Cool Para Hombre" [ref=e390]:
+                                  - /url: /ideas/ropa-cool-para-hombre/898310476718/
+                                - link "Combinacion De Ropa Hombre" [ref=e394]:
+                                  - /url: /ideas/combinacion-de-ropa-hombre/934694789729/
+                                - link "Ropa De Caballero" [ref=e398]:
+                                  - /url: /ideas/ropa-de-caballero/894941690856/
+                                - link "Ropa Urbana Hombre" [ref=e402]:
+                                  - /url: /ideas/ropa-urbana-hombre/940676662502/
+                                - link "Ropa Casual De Hombre" [ref=e406]:
+                                  - /url: /ideas/ropa-casual-de-hombre/938955848974/
+                                - link "Combinaciones De Ropa" [ref=e410]:
+                                  - /url: /ideas/combinaciones-de-ropa/949920427509/
+                                - link "Moda Ropa Hombre" [ref=e414]:
+                                  - /url: /ideas/moda-ropa-hombre/943087014948/
+            - listitem [ref=e415]:
+              - button "Tarjeta del Pin" [ref=e417] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e419]:
+                  - generic [ref=e421]:
+                    - generic [ref=e422]:
+                      - link "Ropa Para Novios Iguales, Tipos De Nudos De Corbata, Ropa Para Novios, Atuendos Para Hombres, Vestuario Hombre, Vestimenta Hombre, Ropa Cool Para Hombre, Ropa Elegante Hombre, Combinar Ropa De Hombre" [ref=e424]:
+                        - /url: /pin/604115737561357690/
+                        - img "Ropa Para Novios Iguales, Tipos De Nudos De Corbata, Ropa Para Novios, Atuendos Para Hombres, Vestuario Hombre, Vestimenta Hombre, Ropa Cool Para Hombre, Ropa Elegante Hombre, Combinar Ropa De Hombre" [ref=e434]
+                      - generic [ref=e435]:
+                        - generic [ref=e436]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e437]
+                          - button "Cerrar ventana modal" [ref=e439]:
+                            - img [ref=e442]
+                        - generic [ref=e448]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e449]:
+                            - link "Ropa Para Novios Iguales" [ref=e453]:
+                              - /url: /ideas/ropa-para-novios-iguales/959490896854/
+                            - link "Tipos De Nudos De Corbata" [ref=e457]:
+                              - /url: /ideas/tipos-de-nudos-de-corbata/914655927065/
+                            - link "Ropa Para Novios" [ref=e461]:
+                              - /url: /ideas/ropa-para-novios/934124115019/
+                            - link "Vestuario Hombre" [ref=e465]:
+                              - /url: /ideas/vestuario-hombre/949124210235/
+                            - link "Vestimenta Hombre" [ref=e469]:
+                              - /url: /ideas/vestimenta-hombre/930384991637/
+                            - link "Ropa Elegante Hombre" [ref=e473]:
+                              - /url: /ideas/ropa-elegante-hombre/927111065603/
+                            - link "Combinar Ropa De Hombre" [ref=e477]:
+                              - /url: /ideas/combinar-ropa-de-hombre/915880132783/
+                    - generic [ref=e479]:
+                      - generic:
+                        - link "Ropa Para Novios Iguales, Tipos De Nudos De Corbata, Ropa Para Novios, Atuendos Para Hombres, Vestuario Hombre, Vestimenta Hombre, Ropa Cool Para Hombre, Ropa Elegante Hombre, Combinar Ropa De Hombre":
+                          - /url: /pin/604115737561357690/
+                      - generic [ref=e484]:
+                        - generic "Más acciones" [ref=e486]:
+                          - button "Más acciones" [ref=e487]:
+                            - img [ref=e490]
+                        - generic [ref=e492]:
+                          - generic [ref=e493]:
+                            - heading "Más sobre este Pin" [level=2] [ref=e494]
+                            - button "Cerrar ventana modal" [ref=e496]:
+                              - img [ref=e499]
+                          - generic [ref=e505]:
+                            - generic:
+                              - heading "Intereses relacionados" [level=3]
+                            - generic [ref=e506]:
+                              - link "Ropa Para Novios Iguales" [ref=e510]:
+                                - /url: /ideas/ropa-para-novios-iguales/959490896854/
+                              - link "Tipos De Nudos De Corbata" [ref=e514]:
+                                - /url: /ideas/tipos-de-nudos-de-corbata/914655927065/
+                              - link "Ropa Para Novios" [ref=e518]:
+                                - /url: /ideas/ropa-para-novios/934124115019/
+                              - link "Vestuario Hombre" [ref=e522]:
+                                - /url: /ideas/vestuario-hombre/949124210235/
+                              - link "Vestimenta Hombre" [ref=e526]:
+                                - /url: /ideas/vestimenta-hombre/930384991637/
+                              - link "Ropa Elegante Hombre" [ref=e530]:
+                                - /url: /ideas/ropa-elegante-hombre/927111065603/
+                              - link "Combinar Ropa De Hombre" [ref=e534]:
+                                - /url: /ideas/combinar-ropa-de-hombre/915880132783/
+            - listitem [ref=e535]:
+              - button "Tarjeta del Pin" [ref=e537] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e539]:
+                  - generic [ref=e541]:
+                    - generic [ref=e542]:
+                      - link "Pin" [ref=e544]:
+                        - /url: /pin/604115737561357684/
+                      - generic [ref=e555]:
+                        - heading "Más sobre este Pin" [level=2] [ref=e556]
+                        - button "Cerrar ventana modal" [ref=e558]:
+                          - img [ref=e561]
+                    - generic [ref=e566]:
+                      - generic:
+                        - link "Pin":
+                          - /url: /pin/604115737561357684/
+                      - generic [ref=e571]:
+                        - generic "Más acciones" [ref=e573]:
+                          - button "Más acciones" [ref=e574]:
+                            - img [ref=e577]
+                        - generic [ref=e580]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e581]
+                          - button "Cerrar ventana modal" [ref=e583]:
+                            - img [ref=e586]
+            - listitem [ref=e590]:
+              - button "Tarjeta del Pin" [ref=e592] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e594]:
+                  - generic [ref=e596]:
+                    - generic [ref=e597]:
+                      - link "Outfit Corbata Hombre, Traje Semi Formal Hombre, Camisa Marron Hombre Outfit, Outfits Semi Formal Hombre, Outfits Para Hombres Elegantes, Outfits Hombre Formal, Ropa Para Oficina, Outfit Otoño Hombre, Ternos Para Hombres" [ref=e599]:
+                        - /url: /pin/604115737561357681/
+                        - img "Outfit Corbata Hombre, Traje Semi Formal Hombre, Camisa Marron Hombre Outfit, Outfits Semi Formal Hombre, Outfits Para Hombres Elegantes, Outfits Hombre Formal, Ropa Para Oficina, Outfit Otoño Hombre, Ternos Para Hombres" [ref=e609]
+                      - generic [ref=e610]:
+                        - generic [ref=e611]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e612]
+                          - button "Cerrar ventana modal" [ref=e614]:
+                            - img [ref=e617]
+                        - generic [ref=e623]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e624]:
+                            - link "Outfit Corbata Hombre" [ref=e628]:
+                              - /url: /ideas/outfit-corbata-hombre/940499751466/
+                            - link "Traje Semi Formal Hombre" [ref=e632]:
+                              - /url: /ideas/traje-semi-formal-hombre/928542220323/
+                            - link "Camisa Marron Hombre Outfit" [ref=e636]:
+                              - /url: /ideas/camisa-marron-hombre-outfit/908615678553/
+                            - link "Outfits Semi Formal Hombre" [ref=e640]:
+                              - /url: /ideas/outfits-semi-formal-hombre/959061102904/
+                            - link "Outfits Para Hombres Elegantes" [ref=e644]:
+                              - /url: /ideas/outfits-para-hombres-elegantes/953679324689/
+                            - link "Outfits Hombre Formal" [ref=e648]:
+                              - /url: /ideas/outfits-hombre-formal/935551482794/
+                            - link "Ropa Para Oficina" [ref=e652]:
+                              - /url: /ideas/ropa-para-oficina/902260332198/
+                            - link "Outfit Otoño Hombre" [ref=e656]:
+                              - /url: /ideas/outfit-otoño-hombre/915770572271/
+                            - link "Ternos Para Hombres" [ref=e660]:
+                              - /url: /ideas/ternos-para-hombres/941169101996/
+                    - generic [ref=e662]:
+                      - generic:
+                        - link "Outfit Corbata Hombre, Traje Semi Formal Hombre, Camisa Marron Hombre Outfit, Outfits Semi Formal Hombre, Outfits Para Hombres Elegantes, Outfits Hombre Formal, Ropa Para Oficina, Outfit Otoño Hombre, Ternos Para Hombres":
+                          - /url: /pin/604115737561357681/
+                      - generic [ref=e667]:
+                        - generic "Más acciones" [ref=e669]:
+                          - button "Más acciones" [ref=e670]:
+                            - img [ref=e673]
+                        - generic [ref=e675]:
+                          - generic [ref=e676]:
+                            - heading "Más sobre este Pin" [level=2] [ref=e677]
+                            - button "Cerrar ventana modal" [ref=e679]:
+                              - img [ref=e682]
+                          - generic [ref=e688]:
+                            - generic:
+                              - heading "Intereses relacionados" [level=3]
+                            - generic [ref=e689]:
+                              - link "Outfit Corbata Hombre" [ref=e693]:
+                                - /url: /ideas/outfit-corbata-hombre/940499751466/
+                              - link "Traje Semi Formal Hombre" [ref=e697]:
+                                - /url: /ideas/traje-semi-formal-hombre/928542220323/
+                              - link "Camisa Marron Hombre Outfit" [ref=e701]:
+                                - /url: /ideas/camisa-marron-hombre-outfit/908615678553/
+                              - link "Outfits Semi Formal Hombre" [ref=e705]:
+                                - /url: /ideas/outfits-semi-formal-hombre/959061102904/
+                              - link "Outfits Para Hombres Elegantes" [ref=e709]:
+                                - /url: /ideas/outfits-para-hombres-elegantes/953679324689/
+                              - link "Outfits Hombre Formal" [ref=e713]:
+                                - /url: /ideas/outfits-hombre-formal/935551482794/
+                              - link "Ropa Para Oficina" [ref=e717]:
+                                - /url: /ideas/ropa-para-oficina/902260332198/
+                              - link "Outfit Otoño Hombre" [ref=e721]:
+                                - /url: /ideas/outfit-otoño-hombre/915770572271/
+                              - link "Ternos Para Hombres" [ref=e725]:
+                                - /url: /ideas/ternos-para-hombres/941169101996/
+            - listitem [ref=e726]:
+              - button "Tarjeta del Pin" [ref=e728] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e730]:
+                  - generic [ref=e732]:
+                    - generic [ref=e733]:
+                      - link "Looks Hombre, Moda Hombre, Moda, Túnica, Color, Boda Boho, Vestido Marrón, Trajes Para Hombre, Trajes Marrones" [ref=e735]:
+                        - /url: /pin/604115737561357671/
+                        - img "Looks Hombre, Moda Hombre, Moda, Túnica, Color, Boda Boho, Vestido Marrón, Trajes Para Hombre, Trajes Marrones" [ref=e745]
+                      - generic [ref=e746]:
+                        - generic [ref=e747]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e748]
+                          - button "Cerrar ventana modal" [ref=e750]:
+                            - img [ref=e753]
+                        - generic [ref=e759]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e760]:
+                            - link "Looks Hombre" [ref=e764]:
+                              - /url: /ideas/looks-hombre/937105015166/
+                            - link "Moda Hombre" [ref=e768]:
+                              - /url: /ideas/moda-hombre/902309806190/
+                            - link "Moda" [ref=e772]:
+                              - /url: /ideas/moda/944780620643/
+                            - link "Túnica" [ref=e776]:
+                              - /url: /ideas/túnica/921371593069/
+                            - link "Color" [ref=e780]:
+                              - /url: /ideas/color/905372553007/
+                            - link "Boda Boho" [ref=e784]:
+                              - /url: /ideas/boda-boho/915103166754/
+                            - link "Vestido Marrón" [ref=e788]:
+                              - /url: /ideas/vestido-marrón/893461899272/
+                            - link "Trajes Para Hombre" [ref=e792]:
+                              - /url: /ideas/trajes-para-hombre/900138587887/
+                            - link "Trajes Marrones" [ref=e796]:
+                              - /url: /ideas/trajes-marrones/915335830123/
+                    - generic [ref=e798]:
+                      - generic:
+                        - link "Looks Hombre, Moda Hombre, Moda, Túnica, Color, Boda Boho, Vestido Marrón, Trajes Para Hombre, Trajes Marrones":
+                          - /url: /pin/604115737561357671/
+                      - generic [ref=e803]:
+                        - generic "Más acciones" [ref=e805]:
+                          - button "Más acciones" [ref=e806]:
+                            - img [ref=e809]
+                        - generic [ref=e811]:
+                          - generic [ref=e812]:
+                            - heading "Más sobre este Pin" [level=2] [ref=e813]
+                            - button "Cerrar ventana modal" [ref=e815]:
+                              - img [ref=e818]
+                          - generic [ref=e824]:
+                            - generic:
+                              - heading "Intereses relacionados" [level=3]
+                            - generic [ref=e825]:
+                              - link "Looks Hombre" [ref=e829]:
+                                - /url: /ideas/looks-hombre/937105015166/
+                              - link "Moda Hombre" [ref=e833]:
+                                - /url: /ideas/moda-hombre/902309806190/
+                              - link "Moda" [ref=e837]:
+                                - /url: /ideas/moda/944780620643/
+                              - link "Túnica" [ref=e841]:
+                                - /url: /ideas/túnica/921371593069/
+                              - link "Color" [ref=e845]:
+                                - /url: /ideas/color/905372553007/
+                              - link "Boda Boho" [ref=e849]:
+                                - /url: /ideas/boda-boho/915103166754/
+                              - link "Vestido Marrón" [ref=e853]:
+                                - /url: /ideas/vestido-marrón/893461899272/
+                              - link "Trajes Para Hombre" [ref=e857]:
+                                - /url: /ideas/trajes-para-hombre/900138587887/
+                              - link "Trajes Marrones" [ref=e861]:
+                                - /url: /ideas/trajes-marrones/915335830123/
+            - listitem
+        - heading "Más como esto" [level=2] [ref=e868]
