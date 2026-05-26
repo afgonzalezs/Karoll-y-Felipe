@@ -37,9 +37,48 @@ function Nav() {
   );
 }
 
+function Lightbox({ photos, startIndex, onClose }) {
+  const [index, setIndex] = useState(startIndex);
+  const prev = () => setIndex(i => (i - 1 + photos.length) % photos.length);
+  const next = () => setIndex(i => (i + 1) % photos.length);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape")      onClose();
+      if (e.key === "ArrowRight")  next();
+      if (e.key === "ArrowLeft")   prev();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose, photos.length]);
+
+  return (
+    <div className="lightbox-overlay" onClick={onClose}>
+      <button className="lightbox-close" onClick={onClose} aria-label="Cerrar">✕</button>
+      <button className="lightbox-nav lightbox-prev" onClick={e => { e.stopPropagation(); prev(); }} aria-label="Anterior">&#8249;</button>
+      <img
+        className="lightbox-img"
+        src={photos[index]}
+        alt=""
+        onClick={e => e.stopPropagation()}
+      />
+      <button className="lightbox-nav lightbox-next" onClick={e => { e.stopPropagation(); next(); }} aria-label="Siguiente">&#8250;</button>
+      <span className="lightbox-counter">{index + 1} / {photos.length}</span>
+    </div>
+  );
+}
+
 export default function App() {
   const invitedName = useMemo(() => getInvitedName(), []);
   const { isUntying, isOpened, hideEnvelope, isAnimatingOpen, envelopeScreenClass, invitationClass, openInvitation } = useEnvelope();
+  const [lightbox, setLightbox] = useState(null);
+  const openLightbox = (e) => {
+    if (e.currentTarget._dragged) return;
+    const img = e.target.closest("img");
+    if (!img) return;
+    const imgs = [...e.currentTarget.querySelectorAll("img")];
+    setLightbox({ photos: imgs.map(i => i.src), index: imgs.indexOf(img) });
+  };
   useReveal();
 
   return (
@@ -91,7 +130,7 @@ export default function App() {
 
         {/* ── HISTORIA (bold section morado) ── */}
         <section className="bold-section">
-          <img src="/photos/embrace.jpg" className="bold-photo-strip" alt="" />
+          <img src="/photos/Copia_IMG_7637.png" className="bold-photo-strip" alt="" />
           <div className="bold-strip-header">
             <span className="bold-strip-title">Nuestra historia</span>
             <a href="#rsvp" className="bold-strip-link">Confirmar asistencia &rarr;</a>
@@ -112,35 +151,164 @@ export default function App() {
           </div>
         </section>
 
-        {/* ── PHOTO CAROUSEL ── */}
+        {/* ── NOSOTROS + PHOTO CAROUSEL ── */}
+        <div className="nosotros-header">
+          <span className="nosotros-eyebrow">Una historia desde 2013</span>
+          <h2 className="nosotros-title">Nosotros</h2>
+        </div>
         <div className="photo-grid" ref={el => {
           if (!el) return;
           let isDown = false, startX, scrollLeft;
-          el.onmousedown = e => { isDown = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; };
-          el.onmouseleave = () => isDown = false;
-          el.onmouseup = () => isDown = false;
-          el.onmousemove = e => { if (!isDown) return; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5; };
-        }}>
-          <img src="/photos/kiss.jpg"         alt="" loading="lazy" />
-          <img src="/photos/engaged.jpg"     alt="" loading="lazy" />
-          <img src="/photos/proposal.jpg"    alt="" loading="lazy" />
-          <img src="/photos/ocean.jpg"       alt="" loading="lazy" />
-          <img src="/photos/ring.jpg"        alt="" loading="lazy" />
-          <img src="/photos/pool.jpg"        alt="" loading="lazy" />
-          <img src="/photos/mountains.jpg"   alt="" loading="lazy" />
-          <img src="/photos/lights.jpg"      alt="" loading="lazy" />
-          <img src="/photos/viewpoint.jpg"   alt="" loading="lazy" />
-          <img src="/photos/tender.jpg"      alt="" loading="lazy" />
-          <img src="/photos/park.jpg"        alt="" loading="lazy" />
-          <img src="/photos/ocean.jpg"       alt="" loading="lazy" />
-          <img src="/photos/warm.jpg"        alt="" loading="lazy" />
-          <img src="/photos/graduation2.jpg" alt="" loading="lazy" />
-          <img src="/photos/lake.jpg"        alt="" loading="lazy" />
-          <img src="/photos/redlips.jpg"     alt="" loading="lazy" />
-          <img src="/photos/colombia.jpg"    alt="" loading="lazy" />
-          <img src="/photos/beachkiss.jpg"   alt="" loading="lazy" />
-          <img src="/photos/cenote.jpg"      alt="" loading="lazy" />
-          <img src="/photos/engaged.jpg"     alt="" loading="lazy" />
+          el._dragged = false;
+          el.onmousedown = e => { isDown = true; el._dragged = false; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; };
+          el.onmouseleave = () => { isDown = false; };
+          el.onmouseup = () => { isDown = false; };
+          el.onmousemove = e => { if (!isDown) return; if (Math.abs(e.pageX - el.offsetLeft - startX) > 5) el._dragged = true; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5; };
+        }} onClick={openLightbox}>
+          <img src="/photos/fykfreskq.jpeg"    alt="" loading="lazy" />
+          <img src="/photos/gradok.jpeg"        alt="" loading="lazy" />
+          <img src="/photos/nos_7371.png"       alt="" loading="lazy" />
+          <img src="/photos/nos_7508.png"       alt="" loading="lazy" />
+          <img src="/photos/nos_7573.png"       alt="" loading="lazy" />
+          <img src="/photos/nos_7575.png"       alt="" loading="lazy" />
+          <img src="/photos/nos_7580.png"       alt="" loading="lazy" />
+          <img src="/photos/nos_7581.png"       alt="" loading="lazy" />
+          <img src="/photos/nos_7582.png"       alt="" loading="lazy" />
+          <img src="/photos/nos_7618.png"       alt="" loading="lazy" />
+          <img src="/photos/nos_7637.png"       alt="" loading="lazy" />
+          <img src="/photos/nos_7648.png"       alt="" loading="lazy" />
+          <img src="/photos/nos_copia_7573.png" alt="" loading="lazy" />
+          <img src="/photos/nos_wa01.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa02.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa03.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa04.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa05.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa06.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa07.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa08.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa09.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa10.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa11.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa12.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa13.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa14.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa15.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa16.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa17.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa18.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa19.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa20.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa21.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa22.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa23.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa24.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa25.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa26.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa27.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa28.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa29.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa30.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa31.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_wa32.jpeg"      alt="" loading="lazy" />
+          <img src="/photos/nos_dsc0005.jpg"    alt="" loading="lazy" />
+          <img src="/photos/nos_img20220308.jpg" alt="" loading="lazy" />
+          <img src="/photos/nos_img20220320.jpg" alt="" loading="lazy" />
+        </div>
+
+        {/* ── FAMILIA Y AMIGOS + PHOTO CAROUSEL ── */}
+        <div className="nosotros-header">
+          <span className="nosotros-eyebrow">Los que nos acompañan</span>
+          <h2 className="nosotros-title">Familia y Amigos</h2>
+        </div>
+        <div className="photo-grid" ref={el => {
+          if (!el) return;
+          let isDown = false, startX, scrollLeft;
+          el._dragged = false;
+          el.onmousedown = e => { isDown = true; el._dragged = false; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; };
+          el.onmouseleave = () => { isDown = false; };
+          el.onmouseup = () => { isDown = false; };
+          el.onmousemove = e => { if (!isDown) return; if (Math.abs(e.pageX - el.offsetLeft - startX) > 5) el._dragged = true; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5; };
+        }} onClick={openLightbox}>
+          <img src="/photos/fam_a0.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_a1.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_a2.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_a20.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a21.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a22.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a24.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a26.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a27.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a28.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a29.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a3.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_a32.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a36.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a38.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a39.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a4.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_a40.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a41.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a42.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a43.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a44.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a45.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a46.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a47.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a48.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a49.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a5.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_a50.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a51.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a52.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a53.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_a6.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_a8.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_a9.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_every.jpg"  alt="" loading="lazy" />
+          <img src="/photos/fam_every2.jpg" alt="" loading="lazy" />
+          <img src="/photos/fam_f.jpg"      alt="" loading="lazy" />
+          <img src="/photos/fam_f01.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f1.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_f17.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f19.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f2.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_f20.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_t7.jpg"      alt="" loading="lazy" />
+          <img src="/photos/fam_t9.jpg"      alt="" loading="lazy" />
+          <img src="/photos/fam_every3.jpeg" alt="" loading="lazy" />
+          <img src="/photos/fam_f8.jpeg"     alt="" loading="lazy" />
+          <img src="/photos/fam_f9.jpeg"     alt="" loading="lazy" />
+          <img src="/photos/fam_f10.jpeg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f12.jpeg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f13.jpeg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f21.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f22.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f23.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f24.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f25.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f26.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f27.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f3.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_f30.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f31.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f33.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f35.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f36.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f39.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f4.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_f40.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f45.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f46.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f47.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f48.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f49.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_f5.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_f6.jpg"     alt="" loading="lazy" />
+          <img src="/photos/fam_f99.jpg"    alt="" loading="lazy" />
+          <img src="/photos/fam_t.jpg"      alt="" loading="lazy" />
+          <img src="/photos/fam_t10.jpeg"   alt="" loading="lazy" />
+          <img src="/photos/fam_t11.jpeg"   alt="" loading="lazy" />
+          
         </div>
 
         {/* ── DETALLES ── */}
@@ -267,6 +435,8 @@ export default function App() {
           </div>
         </section>
       </div>
+
+      {lightbox && <Lightbox photos={lightbox.photos} startIndex={lightbox.index} onClose={() => setLightbox(null)} />}
     </>
   );
 }
