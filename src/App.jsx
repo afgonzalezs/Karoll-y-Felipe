@@ -1,7 +1,7 @@
-import { useMemo, useEffect, useState } from "react";
+import { useMemo, useEffect, useState, useRef } from "react";
 import { siteContent } from "./config/siteContent";
 import { useEnvelope } from "./hooks/useEnvelope";
-import { getInvitedName } from "./utils/getInvitedName";
+import { getInvitedName, getToken } from "./utils/getInvitedName";
 import EnvelopeIntro from "./components/EnvelopeIntro";
 import Countdown from "./components/Countdown";
 import MapView from "./components/MapView";
@@ -39,10 +39,17 @@ function Nav() {
   );
 }
 
+const REACTIONS = ["❤️", "😂", "😍", "🔥", "💃"];
+
 function Lightbox({ photos, startIndex, invitado, onClose }) {
   const [index, setIndex] = useState(startIndex);
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+  const [myReaction, setMyReaction] = useState(null);
+  const [counts, setCounts] = useState({});
+  const [showComments, setShowComments] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
+  const [sending, setSending] = useState(false);
+  const commentsEndRef = useRef(null);
   const prev = () => setIndex(i => (i - 1 + photos.length) % photos.length);
   const next = () => setIndex(i => (i + 1) % photos.length);
 
@@ -50,9 +57,9 @@ function Lightbox({ photos, startIndex, invitado, onClose }) {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "Escape")      onClose();
-      if (e.key === "ArrowRight")  next();
-      if (e.key === "ArrowLeft")   prev();
+      if (e.key === "Escape")     onClose();
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft")  prev();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
@@ -60,39 +67,106 @@ function Lightbox({ photos, startIndex, invitado, onClose }) {
 
   useEffect(() => {
     const pid = photoId(photos[index]);
-    const q = query(collection(db, "reactions"), orderBy("timestamp", "desc"));
-    const unsub = onSnapshot(collection(db, `reactions_${pid}`), (snap) => {
-      setLikeCount(snap.size);
-      setLiked(snap.docs.some(d => d.id === invitado));
+    const unsubR = onSnapshot(collection(db, `reactions_${pid}`), (snap) => {
+      const c = {};
+      let mine = null;
+      snap.docs.forEach(d => {
+        const { type } = d.data();
+        c[type] = (c[type] || 0) + 1;
+        if (d.id === invitado) mine = type;
+      });
+      setCounts(c);
+      setMyReaction(mine);
     });
-    return () => unsub();
+    const q = query(collection(db, `comments_${pid}`), orderBy("timestamp", "asc"));
+    const unsubC = onSnapshot(q, (snap) => {
+      setComments(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+    });
+    return () => { unsubR(); unsubC(); };
   }, [index, photos, invitado]);
 
-  const toggleLike = async (e) => {
+  useEffect(() => {
+    if (showComments) commentsEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [comments, showComments]);
+
+  const react = async (e, emoji) => {
     e.stopPropagation();
     const pid = photoId(photos[index]);
     const ref = doc(db, `reactions_${pid}`, invitado);
-    if (liked) {
+    if (myReaction === emoji) {
       await deleteDoc(ref);
     } else {
-      await setDoc(ref, { invitado, photoUrl: photos[index], timestamp: serverTimestamp() });
+      await setDoc(ref, { invitado, type: emoji, photoUrl: photos[index], timestamp: serverTimestamp() });
     }
+  };
+
+  const sendComment = async (e) => {
+    e.stopPropagation();
+    if (!newComment.trim() || sending) return;
+    setSending(true);
+    const pid = photoId(photos[index]);
+    await addDoc(collection(db, `comments_${pid}`), {
+      invitado,
+      text: newComment.trim(),
+      timestamp: serverTimestamp(),
+    });
+    setNewComment("");
+    setSending(false);
   };
 
   return (
     <div className="lightbox-overlay" onClick={onClose}>
       <button className="lightbox-close" onClick={onClose} aria-label="Cerrar">✕</button>
       <button className="lightbox-nav lightbox-prev" onClick={e => { e.stopPropagation(); prev(); }} aria-label="Anterior">&#8249;</button>
-      <img
-        className="lightbox-img"
-        src={photos[index]}
-        alt=""
-        onClick={e => e.stopPropagation()}
-      />
+      <img className="lightbox-img" src={photos[index]} alt="" onClick={e => e.stopPropagation()} />
       <button className="lightbox-nav lightbox-next" onClick={e => { e.stopPropagation(); next(); }} aria-label="Siguiente">&#8250;</button>
-      <button className={`lightbox-like${liked ? " liked" : ""}`} onClick={toggleLike} aria-label="Me gusta">
-        {liked ? "❤️" : "🤍"} {likeCount > 0 && <span>{likeCount}</span>}
-      </button>
+
+      <div className="lightbox-bottom" onClick={e => e.stopPropagation()}>
+        {showComments && (
+          <div className="lb-comments">
+            <div className="lb-comments-list">
+              {comments.length === 0
+                ? <p className="lb-no-comments">Sé el primero en comentar 🤍</p>
+                : comments.map(c => (
+                  <div key={c.id} className="lb-comment">
+                    <span className="lb-comment-author">{c.invitado}</span>
+                    <span className="lb-comment-text">{c.text}</span>
+                  </div>
+                ))
+              }
+              <div ref={commentsEndRef} />
+            </div>
+            <div className="lb-comment-input">
+              <input
+                type="text"
+                value={newComment}
+                onChange={e => setNewComment(e.target.value)}
+                onKeyDown={e => e.key === "Enter" && sendComment(e)}
+                placeholder="Escribe algo..."
+                maxLength={200}
+              />
+              <button onClick={sendComment} disabled={sending || !newComment.trim()}>
+                {sending ? "…" : "↑"}
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="lb-actions">
+          <div className="lightbox-reactions">
+            {REACTIONS.map(emoji => (
+              <button key={emoji} className={`reaction-btn${myReaction === emoji ? " active" : ""}`} onClick={e => react(e, emoji)}>
+                <span className="reaction-emoji">{emoji}</span>
+                {counts[emoji] > 0 && <span className="reaction-count">{counts[emoji]}</span>}
+              </button>
+            ))}
+          </div>
+          <button className={`lb-comment-toggle${showComments ? " active" : ""}`} onClick={() => setShowComments(s => !s)}>
+            💬 {comments.length > 0 && <span>{comments.length}</span>}
+          </button>
+        </div>
+      </div>
+
       <span className="lightbox-counter">{index + 1} / {photos.length}</span>
     </div>
   );
@@ -104,10 +178,14 @@ export default function App() {
   const [lightbox, setLightbox] = useState(null);
 
   // RSVP form
-  const [nombre, setNombre] = useState(invitedName || "");
+  const token = useMemo(() => getToken(), []);
+  const storageKey = `rsvp_confirmado_${token}`;
+  const [nombre, setNombre] = useState(localStorage.getItem(storageKey) || invitedName || "");
   const [asiste, setAsiste] = useState("yes");
   const [mensaje, setMensaje] = useState("");
-  const [rsvpStatus, setRsvpStatus] = useState("idle"); // idle | loading | success | error
+  const [rsvpStatus, setRsvpStatus] = useState(() =>
+    localStorage.getItem(storageKey) ? "success" : "idle"
+  );
 
   const handleRsvp = async (e) => {
     e.preventDefault();
@@ -118,9 +196,10 @@ export default function App() {
         nombre: nombre.trim(),
         asiste: asiste === "yes",
         mensaje: mensaje.trim(),
-        token: new URLSearchParams(window.location.search).get("invitado") || "",
+        token,
         timestamp: serverTimestamp(),
       });
+      localStorage.setItem(storageKey, nombre.trim());
       setRsvpStatus("success");
     } catch {
       setRsvpStatus("error");
@@ -466,7 +545,7 @@ export default function App() {
           <h2 className="reveal d1">Confirmar asistencia</h2>
 
           {rsvpStatus === "success" ? (
-            <div className="rsvp-success reveal">
+            <div className="rsvp-success">
               <p className="rsvp-success-icon">🤍</p>
               <p className="rsvp-success-title">¡Gracias, {nombre}!</p>
               <p className="rsvp-success-text">Tu confirmación quedó guardada. ¡Nos vemos pronto!</p>
