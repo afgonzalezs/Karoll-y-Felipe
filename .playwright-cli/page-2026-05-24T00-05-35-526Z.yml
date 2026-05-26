@@ -1,0 +1,144 @@
+- generic "Google Maps" [ref=e2]:
+  - generic [ref=e3]:
+    - application "Pantalla principal" [ref=e8]
+    - search [ref=e13]:
+      - generic [ref=e14]:
+        - combobox [ref=e16]: Restaurante La Herencia
+        - button "Buscar" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+        - button "Cerrar" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: 
+    - generic [ref=e23]:
+      - generic [ref=e24]:
+        - list [ref=e26]:
+          - listitem [ref=e27]:
+            - button "Menú" [ref=e28] [cursor=pointer]:
+              - generic [ref=e30]: 
+          - listitem [ref=e31]:
+            - button "Guardado" [ref=e32] [cursor=pointer]:
+              - generic [ref=e34]: 
+              - generic [ref=e36]: Guardado
+          - listitem [ref=e37]:
+            - button "Recientes" [disabled] [ref=e38]:
+              - generic [ref=e40]: 
+              - generic [ref=e42]: Recientes
+          - listitem [ref=e44]:
+            - button "Obtener app" [ref=e45] [cursor=pointer]:
+              - generic [ref=e47]: 
+              - generic [ref=e49]: Obtener app
+        - main "Restaurante La Herencia" [ref=e54]:
+          - generic [ref=e55]:
+            - button "Foto de Restaurante La Herencia" [active] [ref=e57] [cursor=pointer]
+            - button "Ver fotos" [ref=e58] [cursor=pointer]:
+              - generic [ref=e59]: 
+              - generic [ref=e60]: Ver fotos
+          - generic [ref=e63]:
+            - heading "Restaurante La Herencia" [level=1] [ref=e65]: Restaurante La Herencia
+            - generic [ref=e67]:
+              - generic [ref=e70]:
+                - text: "4.6"
+                - img "4.6 estrellas" [ref=e71]
+              - button "Restaurante colombiano" [ref=e80]
+          - tablist [ref=e83]:
+            - tab "Descripción general de Restaurante La Herencia" [selected] [ref=e84]:
+              - generic [ref=e86]: Descripción general
+            - tab "Acerca de Restaurante La Herencia" [ref=e88]:
+              - generic [ref=e90]: Acerca de
+          - region "Acciones para Restaurante La Herencia" [ref=e92]:
+            - button "Indicaciones" [ref=e94] [cursor=pointer]:
+              - generic [ref=e96]: 
+              - generic [ref=e97]: Indicaciones
+            - button "Guardar" [ref=e99] [cursor=pointer]:
+              - generic [ref=e101]: 
+              - generic [ref=e102]: Guardar
+            - button "Cerca" [ref=e104] [cursor=pointer]:
+              - generic [ref=e106]: 
+              - generic [ref=e107]: Cerca
+            - button "Enviar al teléfono" [ref=e109] [cursor=pointer]:
+              - generic [ref=e111]: 
+              - generic [ref=e112]: Enviar al teléfono
+            - button "Compartir" [ref=e114] [cursor=pointer]:
+              - generic [ref=e116]: 
+              - generic [ref=e117]: Compartir
+          - link "Pedir en línea" [ref=e120] [cursor=pointer]:
+            - /url: https://www.google.com/searchviewer/42?cvd=CLw_EiYKJOICITIfEhgiFtLX29IPEAoML2cvMTFoMWIxdHIzGAE6AwjwDQ%3D%3D&hl=es-419&gl=co&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=tactile&gei=zkASapKzL_34wbkPzLvHmQo&ei=zkASapKzL_34wbkPzLvHmQo&fo_s=OA,SOE&opi=79508299&orderType=1&ebb=1&cs=0&foub=mcpp
+            - generic [ref=e121]:
+              - generic [ref=e122]: 
+              - text: Pedir en línea
+          - region "Información para Restaurante La Herencia" [ref=e126]:
+            - generic [ref=e127]:
+              - 'button "Dirección: Cra. 9 #69A-26, Bogotá" [ref=e128] [cursor=pointer]':
+                - generic [ref=e129]:
+                  - generic [ref=e131]: 
+                  - generic [ref=e133]: "Cra. 9 #69A-26, Bogotá"
+              - button "Copiar la dirección" [ref=e136] [cursor=pointer]:
+                - generic [ref=e138]: 
+            - button "Horario de atención Cierra pronto · 8 p.m. · Abre a las 9 a.m. del dom Mostrar el horario de atención durante la semana" [ref=e140] [cursor=pointer]:
+              - img "Horario de atención" [ref=e141]: 
+              - generic [ref=e143]:
+                - generic [ref=e145]: Cierra pronto · 8 p.m. · Abre a las 9 a.m. del dom
+                - img "Mostrar el horario de atención durante la semana" [ref=e146]: 
+            - generic [ref=e147]:
+              - link "Buscar mesa fiweex.com" [ref=e148] [cursor=pointer]:
+                - /url: https://fiweex.com/reservas_portal_bienvenida/aIRxgw%3D%3D
+                - generic [ref=e149]:
+                  - generic [ref=e151]: 
+                  - generic [ref=e152]:
+                    - generic [ref=e153]: Buscar mesa
+                    - generic [ref=e154]: fiweex.com
+              - link "Abrir el vínculo de reserva" [ref=e157] [cursor=pointer]:
+                - /url: https://fiweex.com/reservas_portal_bienvenida/aIRxgw%3D%3D
+                - generic [ref=e159]: 
+            - generic [ref=e160]:
+              - 'link "Sitio web: restaurantelaherencia.com" [ref=e161] [cursor=pointer]':
+                - /url: http://www.restaurantelaherencia.com/
+                - generic [ref=e162]:
+                  - generic [ref=e164]: 
+                  - generic [ref=e166]: restaurantelaherencia.com
+              - generic [ref=e167]:
+                - link "Abrir el sitio web" [ref=e169] [cursor=pointer]:
+                  - /url: http://www.restaurantelaherencia.com/
+                  - generic [ref=e171]: 
+                - button "Copiar el sitio web" [ref=e173] [cursor=pointer]:
+                  - generic [ref=e175]: 
+            - generic [ref=e176]:
+              - 'button "Teléfono: (601) 2495195" [ref=e177] [cursor=pointer]':
+                - generic [ref=e178]:
+                  - generic [ref=e180]: 
+                  - generic [ref=e182]: (601) 2495195
+              - generic [ref=e183]:
+                - button "Copiar el número de teléfono" [ref=e185] [cursor=pointer]:
+                  - generic [ref=e187]: 
+                - link "Llamar al número de teléfono" [ref=e189] [cursor=pointer]:
+                  - /url: tel:6012495195
+                  - generic [ref=e191]: 
+          - button "Sugerir una edición" [ref=e195] [cursor=pointer]:
+            - generic [ref=e196]:
+              - generic [ref=e197]: 
+              - generic [ref=e198]: Sugerir una edición
+          - heading "Fotos" [level=2] [ref=e202]
+          - button "Street View" [ref=e205] [cursor=pointer]
+          - button "Agregar fotos y videos" [ref=e213] [cursor=pointer]:
+            - generic [ref=e214]:
+              - generic [ref=e215]: 
+              - generic [ref=e216]: Agregar fotos y videos
+          - button "Escribir una opinión" [ref=e222] [cursor=pointer]:
+            - generic [ref=e223]:
+              - generic [ref=e224]: 
+              - generic [ref=e225]: Escribir una opinión
+          - link "Información sobre estos datos" [ref=e230] [cursor=pointer]:
+            - /url: https://support.google.com/local-listings?p=how_google_sources&authuser=0&hl=es-419
+            - generic [ref=e232]: Información sobre estos datos
+          - generic [ref=e235]:
+            - generic [ref=e237]: 
+            - generic [ref=e238]:
+              - text: Estás viendo una vista limitada de Google Maps.
+              - button "Más información sobre la vista limitada" [ref=e239] [cursor=pointer]: Más información
+          - heading "Aprovecha al máximo Google Maps Acceder" [level=2] [ref=e243]:
+            - generic [ref=e244]: Aprovecha al máximo Google Maps
+            - button "Acceder" [ref=e247] [cursor=pointer]:
+              - generic [ref=e249]: Acceder
+      - generic [ref=e250]:
+        - button "Contraer panel lateral" [ref=e251] [cursor=pointer]:
+          - generic [ref=e252]: 
+        - generic [ref=e253]: Contraer panel lateral

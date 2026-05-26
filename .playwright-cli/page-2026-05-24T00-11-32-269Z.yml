@@ -1,0 +1,10 @@
+- generic [ref=e2]:
+  - region "Abrir invitación" [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]: Invitación especial para
+      - paragraph [ref=e6]: Invitado prueba
+      - button "Abrir invitación" [ref=e8] [cursor=pointer]:
+        - img "Felipe y Karoll" [ref=e9]
+      - paragraph [ref=e10]: 21 · 09 · 2026
+  - option "Sí, allá estaré 🎉" [selected]
+  - option "No podré ir"

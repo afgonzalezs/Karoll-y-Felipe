@@ -1,0 +1,458 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - link "Ir al contenido":
+      - /url: "#"
+      - generic [ref=e8] [cursor=pointer]: Ir al contenido
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - link "Inicio de Pinterest" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img [ref=e16]
+        - link "Explorar" [ref=e32] [cursor=pointer]:
+          - /url: /ideas
+          - generic [ref=e33]: Explorar
+      - generic [ref=e37]:
+        - generic:
+          - img "Ícono de búsqueda"
+        - generic [ref=e38]:
+          - combobox "Buscar" [ref=e39]
+          - generic:
+            - generic:
+              - generic:
+                - generic: Buscar por
+                - generic:
+                  - generic:
+                    - generic: fashion dresses
+                    - generic: simple dresses
+                    - generic: stylish outfits
+                    - generic: modest dresses fashion
+                    - generic: fashion dresses casual
+                    - generic: fashion dresses
+      - generic [ref=e40]:
+        - button "Iniciar sesión" [ref=e42] [cursor=pointer]:
+          - generic [ref=e44]: Iniciar sesión
+        - button "Regístrate" [ref=e46] [cursor=pointer]:
+          - generic [ref=e48]: Regístrate
+        - button "Configuración" [ref=e51] [cursor=pointer]:
+          - img [ref=e54]
+  - main [ref=e57]:
+    - generic [ref=e60]:
+      - generic [ref=e62]:
+        - generic [ref=e64]:
+          - heading "Dress code civil wedding, for her 💜" [level=1] [ref=e66]
+          - generic [ref=e72]:
+            - generic [ref=e73]: 6 Pines
+            - generic [ref=e74]: ·
+            - generic [ref=e75]: 1 min
+          - generic [ref=e77]:
+            - button "Karoll Susatama." [ref=e83] [cursor=pointer]:
+              - img [ref=e93]
+            - generic [ref=e96]:
+              - text: Por
+              - link "Karoll Susatama" [ref=e98] [cursor=pointer]:
+                - /url: /karollsusatama/
+                - generic [ref=e100]: Karoll Susatama
+        - generic "Compartir" [ref=e106]:
+          - button "Compartir" [ref=e107] [cursor=pointer]:
+            - img [ref=e110]
+      - generic [ref=e114]:
+        - generic [ref=e122]:
+          - generic [ref=e123]: Pines cargados para el tablero
+          - list [ref=e128]:
+            - listitem [ref=e129]:
+              - button "Tarjeta del Pin" [ref=e131] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e133]:
+                  - generic [ref=e135]:
+                    - generic [ref=e136]:
+                      - 'link "Finding the perfect evening look. The way this fabric drapes is pure poetry. A moody, romantic choice for autumn weddings or winter formal events. Save this for your next \"Main Character\" outfit moment. #WeddingGuestOutfit #MoodyAesthetic #DrapedDress #WinterFashion #ElegantStyle Vestido De Dia Elegante, Vestidos De Dia Elegantes, Vestidos Con Capa, Vestidos Cafes Elegantes, Vestidos Elegantes Con Mangas, Vestidos Para Casamento, Vestido Vintage, Outfits Con Vestidos, Vestidos De Graduacion" [ref=e138]':
+                        - /url: /pin/604115737561357535/
+                        - 'img "Finding the perfect evening look. The way this fabric drapes is pure poetry. A moody, romantic choice for autumn weddings or winter formal events. Save this for your next \"Main Character\" outfit moment. #WeddingGuestOutfit #MoodyAesthetic #DrapedDress #WinterFashion #ElegantStyle Vestido De Dia Elegante, Vestidos De Dia Elegantes, Vestidos Con Capa, Vestidos Cafes Elegantes, Vestidos Elegantes Con Mangas, Vestidos Para Casamento, Vestido Vintage, Outfits Con Vestidos, Vestidos De Graduacion" [ref=e148]'
+                      - generic [ref=e149]:
+                        - generic [ref=e150]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e151]
+                          - button "Cerrar ventana modal" [ref=e153]:
+                            - img [ref=e156]
+                        - generic [ref=e162]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e163]:
+                            - link "Vestido De Dia Elegante" [ref=e167]:
+                              - /url: /ideas/vestido-de-dia-elegante/951642183815/
+                            - link "Vestidos De Dia Elegantes" [ref=e171]:
+                              - /url: /ideas/vestidos-de-dia-elegantes/908612536954/
+                            - link "Vestidos Con Capa" [ref=e175]:
+                              - /url: /ideas/vestidos-con-capa/930844379295/
+                            - link "Vestidos Cafes Elegantes" [ref=e179]:
+                              - /url: /ideas/vestidos-cafes-elegantes/897623491689/
+                            - link "Vestidos Elegantes Con Mangas" [ref=e183]:
+                              - /url: /ideas/vestidos-elegantes-con-mangas/949460860902/
+                            - link "Vestidos Para Casamento" [ref=e187]:
+                              - /url: /ideas/vestidos-para-casamento/924436531270/
+                            - link "Vestido Vintage" [ref=e191]:
+                              - /url: /ideas/vestido-vintage/933511359745/
+                            - link "Outfits Con Vestidos" [ref=e195]:
+                              - /url: /ideas/outfits-con-vestidos/909518915033/
+                            - link "Vestidos De Graduacion" [ref=e199]:
+                              - /url: /ideas/vestidos-de-graduacion/933288335912/
+                    - generic [ref=e201]:
+                      - generic:
+                        - 'link "Finding the perfect evening look. The way this fabric drapes is pure poetry. A moody, romantic choice for autumn weddings or winter formal events. Save this for your next \"Main Character\" outfit moment. #WeddingGuestOutfit #MoodyAesthetic #DrapedDress #WinterFashion #ElegantStyle Vestido De Dia Elegante, Vestidos De Dia Elegantes, Vestidos Con Capa, Vestidos Cafes Elegantes, Vestidos Elegantes Con Mangas, Vestidos Para Casamento, Vestido Vintage, Outfits Con Vestidos, Vestidos De Graduacion"':
+                          - /url: /pin/604115737561357535/
+                      - generic [ref=e208]:
+                        - 'button "Finding the perfect evening look. The way this fabric drapes is pure poetry. A moody, romantic choice for autumn weddings or winter formal events. Save this for your next \"Main Character\" outfit moment. #WeddingGuestOutfit #MoodyAesthetic #DrapedDress #WinterFashion #ElegantStyle" [ref=e210]':
+                          - generic [ref=e211]: "Finding the perfect evening look. The way this fabric drapes is pure poetry. A moody, romantic choice for autumn weddings or winter formal events. Save this for your next \"Main Character\" outfit moment. #WeddingGuestOutfit #MoodyAesthetic #DrapedDress #WinterFashion #ElegantStyle"
+                        - generic [ref=e213]:
+                          - generic "Más acciones" [ref=e215]:
+                            - button "Más acciones" [ref=e216]:
+                              - img [ref=e219]
+                          - generic [ref=e221]:
+                            - generic [ref=e222]:
+                              - heading "Más sobre este Pin" [level=2] [ref=e223]
+                              - button "Cerrar ventana modal" [ref=e225]:
+                                - img [ref=e228]
+                            - generic [ref=e234]:
+                              - generic:
+                                - heading "Intereses relacionados" [level=3]
+                              - generic [ref=e235]:
+                                - link "Vestido De Dia Elegante" [ref=e239]:
+                                  - /url: /ideas/vestido-de-dia-elegante/951642183815/
+                                - link "Vestidos De Dia Elegantes" [ref=e243]:
+                                  - /url: /ideas/vestidos-de-dia-elegantes/908612536954/
+                                - link "Vestidos Con Capa" [ref=e247]:
+                                  - /url: /ideas/vestidos-con-capa/930844379295/
+                                - link "Vestidos Cafes Elegantes" [ref=e251]:
+                                  - /url: /ideas/vestidos-cafes-elegantes/897623491689/
+                                - link "Vestidos Elegantes Con Mangas" [ref=e255]:
+                                  - /url: /ideas/vestidos-elegantes-con-mangas/949460860902/
+                                - link "Vestidos Para Casamento" [ref=e259]:
+                                  - /url: /ideas/vestidos-para-casamento/924436531270/
+                                - link "Vestido Vintage" [ref=e263]:
+                                  - /url: /ideas/vestido-vintage/933511359745/
+                                - link "Outfits Con Vestidos" [ref=e267]:
+                                  - /url: /ideas/outfits-con-vestidos/909518915033/
+                                - link "Vestidos De Graduacion" [ref=e271]:
+                                  - /url: /ideas/vestidos-de-graduacion/933288335912/
+            - listitem [ref=e272]:
+              - button "Tarjeta del Pin" [ref=e274] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e276]:
+                  - generic [ref=e278]:
+                    - generic [ref=e279]:
+                      - link "Ropa Para Bautizo, Atuendos De Moda, Vestidos Para Boda Invitada, Ropa Vaquera Para Mujeres, Pantalones De Moda Mujer, Outfits Formales, Modelos De Vestido, Vestidos De Noche Elegante, Trajes Elegantes" [ref=e281]:
+                        - /url: /pin/604115737561357511/
+                        - img "Ropa Para Bautizo, Atuendos De Moda, Vestidos Para Boda Invitada, Ropa Vaquera Para Mujeres, Pantalones De Moda Mujer, Outfits Formales, Modelos De Vestido, Vestidos De Noche Elegante, Trajes Elegantes" [ref=e291]
+                      - generic [ref=e292]:
+                        - generic [ref=e293]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e294]
+                          - button "Cerrar ventana modal" [ref=e296]:
+                            - img [ref=e299]
+                        - generic [ref=e305]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e306]:
+                            - link "Ropa Para Bautizo" [ref=e310]:
+                              - /url: /ideas/ropa-para-bautizo/923510660855/
+                            - link "Atuendos De Moda" [ref=e314]:
+                              - /url: /ideas/atuendos-de-moda/895624848510/
+                            - link "Vestidos Para Boda Invitada" [ref=e318]:
+                              - /url: /ideas/vestidos-para-boda-invitada/935777493733/
+                            - link "Ropa Vaquera Para Mujeres" [ref=e322]:
+                              - /url: /ideas/ropa-vaquera-para-mujeres/948858634219/
+                            - link "Pantalones De Moda Mujer" [ref=e326]:
+                              - /url: /ideas/pantalones-de-moda-mujer/900867539825/
+                            - link "Outfits Formales" [ref=e330]:
+                              - /url: /ideas/outfits-formales/947795889928/
+                            - link "Modelos De Vestido" [ref=e334]:
+                              - /url: /ideas/modelos-de-vestido/928495188746/
+                            - link "Vestidos De Noche Elegante" [ref=e338]:
+                              - /url: /ideas/vestidos-de-noche-elegante/959123704687/
+                            - link "Trajes Elegantes" [ref=e342]:
+                              - /url: /ideas/trajes-elegantes/901827215367/
+                    - generic [ref=e344]:
+                      - generic:
+                        - link "Ropa Para Bautizo, Atuendos De Moda, Vestidos Para Boda Invitada, Ropa Vaquera Para Mujeres, Pantalones De Moda Mujer, Outfits Formales, Modelos De Vestido, Vestidos De Noche Elegante, Trajes Elegantes":
+                          - /url: /pin/604115737561357511/
+                      - generic [ref=e349]:
+                        - generic "Más acciones" [ref=e351]:
+                          - button "Más acciones" [ref=e352]:
+                            - img [ref=e355]
+                        - generic [ref=e357]:
+                          - generic [ref=e358]:
+                            - heading "Más sobre este Pin" [level=2] [ref=e359]
+                            - button "Cerrar ventana modal" [ref=e361]:
+                              - img [ref=e364]
+                          - generic [ref=e370]:
+                            - generic:
+                              - heading "Intereses relacionados" [level=3]
+                            - generic [ref=e371]:
+                              - link "Ropa Para Bautizo" [ref=e375]:
+                                - /url: /ideas/ropa-para-bautizo/923510660855/
+                              - link "Atuendos De Moda" [ref=e379]:
+                                - /url: /ideas/atuendos-de-moda/895624848510/
+                              - link "Vestidos Para Boda Invitada" [ref=e383]:
+                                - /url: /ideas/vestidos-para-boda-invitada/935777493733/
+                              - link "Ropa Vaquera Para Mujeres" [ref=e387]:
+                                - /url: /ideas/ropa-vaquera-para-mujeres/948858634219/
+                              - link "Pantalones De Moda Mujer" [ref=e391]:
+                                - /url: /ideas/pantalones-de-moda-mujer/900867539825/
+                              - link "Outfits Formales" [ref=e395]:
+                                - /url: /ideas/outfits-formales/947795889928/
+                              - link "Modelos De Vestido" [ref=e399]:
+                                - /url: /ideas/modelos-de-vestido/928495188746/
+                              - link "Vestidos De Noche Elegante" [ref=e403]:
+                                - /url: /ideas/vestidos-de-noche-elegante/959123704687/
+                              - link "Trajes Elegantes" [ref=e407]:
+                                - /url: /ideas/trajes-elegantes/901827215367/
+            - listitem [ref=e408]:
+              - button "Tarjeta del Pin" [ref=e410] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e412]:
+                  - generic [ref=e414]:
+                    - generic [ref=e415]:
+                      - link "Vestidos Para Grado, Traje Sastre, Ropa Mujer Elegante, Trajes De Vestir, Estilos De Ropa Mujer, Vestir Con Estilo, Conjuntos Elegantes, Trajes Elegantes, Diseña Tu Ropa" [ref=e417]:
+                        - /url: /pin/604115737561357504/
+                        - img "Vestidos Para Grado, Traje Sastre, Ropa Mujer Elegante, Trajes De Vestir, Estilos De Ropa Mujer, Vestir Con Estilo, Conjuntos Elegantes, Trajes Elegantes, Diseña Tu Ropa" [ref=e427]
+                      - generic [ref=e428]:
+                        - generic [ref=e429]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e430]
+                          - button "Cerrar ventana modal" [ref=e432]:
+                            - img [ref=e435]
+                        - generic [ref=e441]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e442]:
+                            - link "Vestidos Para Grado" [ref=e446]:
+                              - /url: /ideas/vestidos-para-grado/954247590136/
+                            - link "Traje Sastre" [ref=e450]:
+                              - /url: /ideas/traje-sastre/908635523097/
+                            - link "Ropa Mujer Elegante" [ref=e454]:
+                              - /url: /ideas/ropa-mujer-elegante/960586372677/
+                            - link "Trajes De Vestir" [ref=e458]:
+                              - /url: /ideas/trajes-de-vestir/933066968670/
+                            - link "Estilos De Ropa Mujer" [ref=e462]:
+                              - /url: /ideas/estilos-de-ropa-mujer/920728910140/
+                            - link "Vestir Con Estilo" [ref=e466]:
+                              - /url: /ideas/vestir-con-estilo/929403373401/
+                            - link "Conjuntos Elegantes" [ref=e470]:
+                              - /url: /ideas/conjuntos-elegantes/960319872474/
+                            - link "Diseña Tu Ropa" [ref=e474]:
+                              - /url: /ideas/diseña-tu-ropa/936229063856/
+                    - generic [ref=e476]:
+                      - generic:
+                        - link "Vestidos Para Grado, Traje Sastre, Ropa Mujer Elegante, Trajes De Vestir, Estilos De Ropa Mujer, Vestir Con Estilo, Conjuntos Elegantes, Trajes Elegantes, Diseña Tu Ropa":
+                          - /url: /pin/604115737561357504/
+                      - generic [ref=e481]:
+                        - generic "Más acciones" [ref=e483]:
+                          - button "Más acciones" [ref=e484]:
+                            - img [ref=e487]
+                        - generic [ref=e489]:
+                          - generic [ref=e490]:
+                            - heading "Más sobre este Pin" [level=2] [ref=e491]
+                            - button "Cerrar ventana modal" [ref=e493]:
+                              - img [ref=e496]
+                          - generic [ref=e502]:
+                            - generic:
+                              - heading "Intereses relacionados" [level=3]
+                            - generic [ref=e503]:
+                              - link "Vestidos Para Grado" [ref=e507]:
+                                - /url: /ideas/vestidos-para-grado/954247590136/
+                              - link "Traje Sastre" [ref=e511]:
+                                - /url: /ideas/traje-sastre/908635523097/
+                              - link "Ropa Mujer Elegante" [ref=e515]:
+                                - /url: /ideas/ropa-mujer-elegante/960586372677/
+                              - link "Trajes De Vestir" [ref=e519]:
+                                - /url: /ideas/trajes-de-vestir/933066968670/
+                              - link "Estilos De Ropa Mujer" [ref=e523]:
+                                - /url: /ideas/estilos-de-ropa-mujer/920728910140/
+                              - link "Vestir Con Estilo" [ref=e527]:
+                                - /url: /ideas/vestir-con-estilo/929403373401/
+                              - link "Conjuntos Elegantes" [ref=e531]:
+                                - /url: /ideas/conjuntos-elegantes/960319872474/
+                              - link "Diseña Tu Ropa" [ref=e535]:
+                                - /url: /ideas/diseña-tu-ropa/936229063856/
+            - listitem [ref=e536]:
+              - button "Tarjeta del Pin" [ref=e538] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e540]:
+                  - generic [ref=e542]:
+                    - generic [ref=e543]:
+                      - link "Sesión De Fotos De Belleza, Trajes De Vestir Mujer, Trajes De Vestir, Camisa De Moda, Ropa Formal, Pantalones De Moda, Ropa De Moda Mujer, Ropa Elegante, Vestidos De Mujer" [ref=e545]:
+                        - /url: /pin/604115737561357508/
+                        - img "Sesión De Fotos De Belleza, Trajes De Vestir Mujer, Trajes De Vestir, Camisa De Moda, Ropa Formal, Pantalones De Moda, Ropa De Moda Mujer, Ropa Elegante, Vestidos De Mujer" [ref=e555]
+                      - generic [ref=e556]:
+                        - generic [ref=e557]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e558]
+                          - button "Cerrar ventana modal" [ref=e560]:
+                            - img [ref=e563]
+                        - generic [ref=e569]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e570]:
+                            - link "Sesión De Fotos De Belleza" [ref=e574]:
+                              - /url: /ideas/sesión-de-fotos-de-belleza/924358674107/
+                            - link "Trajes De Vestir Mujer" [ref=e578]:
+                              - /url: /ideas/trajes-de-vestir-mujer/896794114282/
+                            - link "Camisa De Moda" [ref=e582]:
+                              - /url: /ideas/camisa-de-moda/957841255777/
+                            - link "Ropa Formal" [ref=e586]:
+                              - /url: /ideas/ropa-formal/932207827500/
+                            - link "Pantalones De Moda" [ref=e590]:
+                              - /url: /ideas/pantalones-de-moda/910114481633/
+                            - link "Ropa De Moda Mujer" [ref=e594]:
+                              - /url: /ideas/ropa-de-moda-mujer/925229833345/
+                            - link "Ropa Elegante" [ref=e598]:
+                              - /url: /ideas/ropa-elegante/938658594877/
+                            - link "Vestidos De Mujer" [ref=e602]:
+                              - /url: /ideas/vestidos-de-mujer/899975188486/
+                    - generic [ref=e604]:
+                      - generic:
+                        - link "Sesión De Fotos De Belleza, Trajes De Vestir Mujer, Trajes De Vestir, Camisa De Moda, Ropa Formal, Pantalones De Moda, Ropa De Moda Mujer, Ropa Elegante, Vestidos De Mujer":
+                          - /url: /pin/604115737561357508/
+                      - generic [ref=e609]:
+                        - generic "Más acciones" [ref=e611]:
+                          - button "Más acciones" [ref=e612]:
+                            - img [ref=e615]
+                        - generic [ref=e617]:
+                          - generic [ref=e618]:
+                            - heading "Más sobre este Pin" [level=2] [ref=e619]
+                            - button "Cerrar ventana modal" [ref=e621]:
+                              - img [ref=e624]
+                          - generic [ref=e630]:
+                            - generic:
+                              - heading "Intereses relacionados" [level=3]
+                            - generic [ref=e631]:
+                              - link "Sesión De Fotos De Belleza" [ref=e635]:
+                                - /url: /ideas/sesión-de-fotos-de-belleza/924358674107/
+                              - link "Trajes De Vestir Mujer" [ref=e639]:
+                                - /url: /ideas/trajes-de-vestir-mujer/896794114282/
+                              - link "Camisa De Moda" [ref=e643]:
+                                - /url: /ideas/camisa-de-moda/957841255777/
+                              - link "Ropa Formal" [ref=e647]:
+                                - /url: /ideas/ropa-formal/932207827500/
+                              - link "Pantalones De Moda" [ref=e651]:
+                                - /url: /ideas/pantalones-de-moda/910114481633/
+                              - link "Ropa De Moda Mujer" [ref=e655]:
+                                - /url: /ideas/ropa-de-moda-mujer/925229833345/
+                              - link "Ropa Elegante" [ref=e659]:
+                                - /url: /ideas/ropa-elegante/938658594877/
+                              - link "Vestidos De Mujer" [ref=e663]:
+                                - /url: /ideas/vestidos-de-mujer/899975188486/
+            - listitem [ref=e664]:
+              - button "Tarjeta del Pin" [ref=e666] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e668]:
+                  - generic [ref=e670]:
+                    - generic [ref=e671]:
+                      - link "many different types of women in long dresses" [ref=e673]:
+                        - /url: /pin/604115737561357559/
+                        - img "many different types of women in long dresses" [ref=e683]
+                      - generic [ref=e684]:
+                        - generic [ref=e685]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e686]
+                          - button "Cerrar ventana modal" [ref=e688]:
+                            - img [ref=e691]
+                        - generic [ref=e697]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e698]:
+                            - link "Vestidos Cafes" [ref=e702]:
+                              - /url: /ideas/vestidos-cafes/951879683357/
+                            - link "Vestido Marrón" [ref=e706]:
+                              - /url: /ideas/vestido-marrón/893461899272/
+                            - link "Aniversario De Bodas" [ref=e710]:
+                              - /url: /ideas/aniversario-de-bodas/925330036054/
+                            - link "Madrina" [ref=e714]:
+                              - /url: /ideas/madrina/926769056963/
+                            - link "Casamiento" [ref=e718]:
+                              - /url: /ideas/casamiento/915730843606/
+                            - link "Damas De Honor" [ref=e722]:
+                              - /url: /ideas/damas-de-honor/946122660935/
+                            - link "Mi Boda" [ref=e726]:
+                              - /url: /ideas/mi-boda/912302297544/
+                            - link "Damas" [ref=e730]:
+                              - /url: /ideas/damas/931144566594/
+                            - link "Vestidos De Novia" [ref=e734]:
+                              - /url: /ideas/vestidos-de-novia/951806565255/
+                    - generic [ref=e736]:
+                      - generic:
+                        - link "many different types of women in long dresses":
+                          - /url: /pin/604115737561357559/
+                      - generic [ref=e741]:
+                        - generic "Más acciones" [ref=e743]:
+                          - button "Más acciones" [ref=e744]:
+                            - img [ref=e747]
+                        - generic [ref=e749]:
+                          - generic [ref=e750]:
+                            - heading "Más sobre este Pin" [level=2] [ref=e751]
+                            - button "Cerrar ventana modal" [ref=e753]:
+                              - img [ref=e756]
+                          - generic [ref=e762]:
+                            - generic:
+                              - heading "Intereses relacionados" [level=3]
+                            - generic [ref=e763]:
+                              - link "Vestidos Cafes" [ref=e767]:
+                                - /url: /ideas/vestidos-cafes/951879683357/
+                              - link "Vestido Marrón" [ref=e771]:
+                                - /url: /ideas/vestido-marrón/893461899272/
+                              - link "Aniversario De Bodas" [ref=e775]:
+                                - /url: /ideas/aniversario-de-bodas/925330036054/
+                              - link "Madrina" [ref=e779]:
+                                - /url: /ideas/madrina/926769056963/
+                              - link "Casamiento" [ref=e783]:
+                                - /url: /ideas/casamiento/915730843606/
+                              - link "Damas De Honor" [ref=e787]:
+                                - /url: /ideas/damas-de-honor/946122660935/
+                              - link "Mi Boda" [ref=e791]:
+                                - /url: /ideas/mi-boda/912302297544/
+                              - link "Damas" [ref=e795]:
+                                - /url: /ideas/damas/931144566594/
+                              - link "Vestidos De Novia" [ref=e799]:
+                                - /url: /ideas/vestidos-de-novia/951806565255/
+            - listitem [ref=e800]:
+              - button "Tarjeta del Pin" [ref=e802] [cursor=pointer]:
+                - group "Tarjeta del Pin" [ref=e804]:
+                  - generic [ref=e806]:
+                    - generic [ref=e807]:
+                      - link "a group of women in pink dresses standing next to each other" [ref=e809]:
+                        - /url: /pin/604115737561357574/
+                        - img "a group of women in pink dresses standing next to each other" [ref=e819]
+                      - generic [ref=e820]:
+                        - generic [ref=e821]:
+                          - heading "Más sobre este Pin" [level=2] [ref=e822]
+                          - button "Cerrar ventana modal" [ref=e824]:
+                            - img [ref=e827]
+                        - generic [ref=e833]:
+                          - generic:
+                            - heading "Intereses relacionados" [level=3]
+                          - generic [ref=e834]:
+                            - link "Neón" [ref=e838]:
+                              - /url: /ideas/neón/911052813493/
+                            - link "Rosa Polvoriento" [ref=e842]:
+                              - /url: /ideas/rosa-polvoriento/900111909013/
+                            - link "Color" [ref=e846]:
+                              - /url: /ideas/color/905372553007/
+                            - link "Rosa" [ref=e850]:
+                              - /url: /ideas/rosa/959084595911/
+                    - generic [ref=e852]:
+                      - generic:
+                        - link "a group of women in pink dresses standing next to each other":
+                          - /url: /pin/604115737561357574/
+                      - generic [ref=e857]:
+                        - generic "Más acciones" [ref=e859]:
+                          - button "Más acciones" [ref=e860]:
+                            - img [ref=e863]
+                        - generic [ref=e865]:
+                          - generic [ref=e866]:
+                            - heading "Más sobre este Pin" [level=2] [ref=e867]
+                            - button "Cerrar ventana modal" [ref=e869]:
+                              - img [ref=e872]
+                          - generic [ref=e878]:
+                            - generic:
+                              - heading "Intereses relacionados" [level=3]
+                            - generic [ref=e879]:
+                              - link "Neón" [ref=e883]:
+                                - /url: /ideas/neón/911052813493/
+                              - link "Rosa Polvoriento" [ref=e887]:
+                                - /url: /ideas/rosa-polvoriento/900111909013/
+                              - link "Color" [ref=e891]:
+                                - /url: /ideas/color/905372553007/
+                              - link "Rosa" [ref=e895]:
+                                - /url: /ideas/rosa/959084595911/
+            - listitem
+        - heading "Más como esto" [level=2] [ref=e902]
