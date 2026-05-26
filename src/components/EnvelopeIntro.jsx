@@ -10,14 +10,14 @@ export default function EnvelopeIntro({
     .filter(Boolean).join(" ");
 
   return (
-    <section className={envelopeScreenClass} aria-label="Abrir invitación">
+    <section className={envelopeScreenClass} aria-label="Abrir invitación" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}fondo.jpg')` }}>
       <div className={wrapperClass}>
         <p className="envelope-kicker">Invitación especial para</p>
         <p className="env-guest-name">{invitedName}</p>
 
         <div className="envelope-img-wrapper">
-          <img src="/envelope.png" className="envelope-closed-img" alt="" />
-          <img src="/envelope-open.png" className="envelope-open-img" alt="" />
+          <img src={import.meta.env.BASE_URL+"envelope.png"} className="envelope-closed-img" alt="" />
+          <img src={import.meta.env.BASE_URL+"envelope-open.png"} className="envelope-open-img" alt="" />
           <button
             className="nombres-btn"
             type="button"
@@ -25,7 +25,7 @@ export default function EnvelopeIntro({
             onClick={onOpen}
             disabled={isAnimatingOpen}
           >
-            <img src="/nombres.png" className="nombres-img" alt="Felipe y Karoll" />
+            <img src={import.meta.env.BASE_URL+"nombres.png"} className="nombres-img" alt="Felipe y Karoll" />
           </button>
         </div>
 
