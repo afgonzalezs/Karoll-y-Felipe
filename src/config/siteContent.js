@@ -8,41 +8,24 @@ export const siteContent = {
   },
   story: {
     paragraphs: [
-      "La vida nos regaló el milagro de encontrarnos en 2013. En un parque, en medio de Bogotá, bastaron unas miradas para reconocer que algo especial acababa de empezar.",
-      "Desde entonces hemos caminado entre risas, pausas y reencuentros. Nos vimos crecer, conocimos nuestras luces y sombras, y en cada paso aprendimos a amar mejor. Hoy, con el corazón agradecido, celebramos la bendición de habernos encontrado tan pequeños y de poder elegirnos para siempre."
+      "El momento en el que la vida decidió que nos encontráramos jugando baloncesto fue aquel en que nuestras vidas cambiaron. Nuestro amor nació de mucha intensidad y de unos corazones muy jóvenes. Fuimos creciendo junto a nuestro amor y cada uno se transformó para dar lo mejor de sí mismo y construir este amor tan profundo y sincero que tenemos por el otro.",
+      "Lo que nos llevó a dar este paso fue descubrir que día a día elegíamos nuestro amor. Una y otra vez. Entendimos también la responsabilidad que teníamos de continuamente seguir construyendo y fortaleciendo este prometedor matrimonio, del cual nos sentimos sumamente orgullosos."
     ],
-    thingsWeAre: [
-      {
-        icon: "🏀",
-        img: "/basketball.png",
-        title: "El básquet",
-        description: "La cancha donde nos desafiamos, reímos y vibramos juntos."
-      },
-      {
-        icon: "🐱",
-        title: "Nuestros gaticos",
-        description: "Los peludos que llenan de amor y caos nuestro hogar."
-      },
-      {
-        icon: "🎵",
-        title: "La música",
-        description: "La banda sonora que acompaña cada momento de nuestra historia."
-      }
-    ]
+    thingsWeAre: []
   },
   music: {
-    src: ""
+    src: "song.mp3"
   },
   gallery: {
     url: "https://photos.app.goo.gl/ivfxbFvec7RLKspM7"
   },
   event: {
-    type: "Boda civil",
+    type: "Recepción de boda",
     dateLongLabel: "Lunes, 21 de septiembre de 2026",
     dateShortLabel: "21.09.2026",
     timeLabel: "6:00 p.m.",
     placeName: "Restaurante La Herencia",
-    address: "Bogotá, Colombia",
+    address: "Cra. 9 #69A-26, Bogotá",
     note: "Ceremonia íntima con nuestros más cercanos.",
     galleryActivationISO: "2026-09-21T00:00:00-05:00"
   },
@@ -56,13 +39,13 @@ export const siteContent = {
     colors: "Chocolate, lavanda, mauve y tonos tierra cálidos.",
     ellas: {
       url: "https://co.pinterest.com/karollsusatama/dress-code-civil-wedding-for-her/",
-      swatches: ["#6B4226", "#C8A8E9", "#C4A090", "#E8D0C8"],
-      preview: "/pinterest-ellas.png"
+      swatches: ["#6B4226", "#3D2314", "#C8A8E9", "#C4A090", "#E8D0C8"],
+      preview: "pinterest-ellas.png"
     },
     ellos: {
       url: "https://co.pinterest.com/karollsusatama/dress-code-civil-wedding-for-him/",
-      swatches: ["#0A0A0A", "#2B2B2B", "#3D2314", "#7B5540", "#C8956C", "#F5EAD8"],
-      preview: "/pinterest-ellos.png"
+      swatches: ["#0A0A0A", "#3D2314", "#7B5540", "#C8956C", "#F5EAD8"],
+      preview: "pinterest-ellos.png"
     }
   },
   gifts: {

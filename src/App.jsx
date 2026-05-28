@@ -1,13 +1,16 @@
 import { useMemo, useEffect, useState, useRef } from "react";
 import { siteContent } from "./config/siteContent";
 import { useEnvelope } from "./hooks/useEnvelope";
-import { getInvitedName, getToken } from "./utils/getInvitedName";
+import { getInvitedName, getToken, getGuest } from "./utils/getInvitedName";
+import { nosotrosPhotos, familiaPhotos, gatitosPhotos } from "./config/photos";
+import WorldClock from "./components/WorldClock";
+import PhotoCarousel from "./components/PhotoCarousel";
 import EnvelopeIntro from "./components/EnvelopeIntro";
 import Countdown from "./components/Countdown";
 import MapView from "./components/MapView";
 import PinterestLink from "./components/PinterestLink";
 import { db } from "./firebase";
-import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, setDoc, deleteDoc, getDoc } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, setDoc, deleteDoc } from "firebase/firestore";
 
 const c = siteContent;
 
@@ -174,6 +177,8 @@ function Lightbox({ photos, startIndex, invitado, onClose }) {
 
 export default function App() {
   const invitedName = useMemo(() => getInvitedName(), []);
+  const guest = useMemo(() => getGuest(getToken()), []);
+  const isVirtual = guest.virtual === true;
   const { isUntying, isOpened, hideEnvelope, isAnimatingOpen, envelopeScreenClass, invitationClass, openInvitation } = useEnvelope();
   const [lightbox, setLightbox] = useState(null);
 
@@ -192,11 +197,12 @@ export default function App() {
     if (!nombre.trim()) return;
     setRsvpStatus("loading");
     try {
-      await addDoc(collection(db, "rsvp"), {
+      await setDoc(doc(db, "rsvp", token), {
         nombre: nombre.trim(),
         asiste: asiste === "yes",
         mensaje: mensaje.trim(),
         token,
+        virtual: isVirtual,
         timestamp: serverTimestamp(),
       });
       localStorage.setItem(storageKey, nombre.trim());
@@ -204,6 +210,11 @@ export default function App() {
     } catch {
       setRsvpStatus("error");
     }
+  };
+
+  const resetRsvp = () => {
+    localStorage.removeItem(storageKey);
+    setRsvpStatus("idle");
   };
 
   // Mensajes en tiempo real
@@ -216,13 +227,7 @@ export default function App() {
     return () => unsub();
   }, []);
 
-  const openLightbox = (e) => {
-    if (e.currentTarget._dragged) return;
-    const img = e.target.closest("img");
-    if (!img) return;
-    const imgs = [...e.currentTarget.querySelectorAll("img")];
-    setLightbox({ photos: imgs.map(i => i.src), index: imgs.indexOf(img) });
-  };
+  const openLightbox = (photos, index) => setLightbox({ photos, index });
   useReveal();
 
   return (
@@ -263,7 +268,7 @@ export default function App() {
               </div>
             </div>
             <p className="hero-caption">
-              Nos emociona anunciarte que celebraremos nuestra boda el 21 de septiembre de 2026 en Bogotá. Sería un honor tenerte presente en este día tan especial para nosotros.
+              Nos emociona compartirles que hemos decidido sellar nuestro amor para la eternidad y nada nos haría más felices que celebrar junto a las personas que han sido parte de esta historia.
             </p>
 
           </div>
@@ -272,12 +277,27 @@ export default function App() {
           </div>
         </section>
 
+        {/* ── SECCIÓN ESPECIAL INVITADOS VIRTUALES ── */}
+        {isVirtual && (
+          <section className="section section-center section-dark virtual-intro">
+            <span className="eyebrow reveal">Con todo nuestro amor</span>
+            <div className="divider center reveal d1" />
+            <h2 className="reveal d1">Siempre presentes</h2>
+            <p className="body-text reveal d2" style={{ color: "rgba(248,245,242,0.85)", maxWidth: 520, margin: "1.2rem auto 0" }}>
+              Hay personas que imaginamos abrazando ese día desde el primer momento en que soñamos esta boda.
+              Aunque la distancia no nos permita tenerte físicamente con nosotros, sigues siendo parte de esta historia
+              y queríamos que recibieras esta invitación con muchísimo amor. 🤍
+            </p>
+            <WorldClock country={guest.country} />
+          </section>
+        )}
+
         {/* ── HISTORIA (bold section morado) ── */}
         <section className="bold-section">
           <img src={import.meta.env.BASE_URL+"photos/Copia_IMG_7637.png"} className="bold-photo-strip" alt="" />
           <div className="bold-strip-header">
             <span className="bold-strip-title">Nuestra historia</span>
-            <a href="#rsvp" className="bold-strip-link">Confirmar asistencia &rarr;</a>
+            {!isVirtual && <a href="#rsvp" className="bold-strip-link">Confirmar asistencia &rarr;</a>}
           </div>
           <span className="bold-section-deco" aria-hidden="true">2026</span>
           <div className="bold-section-content">
@@ -289,173 +309,23 @@ export default function App() {
               <p key={i} className={`bold-text reveal d${i + 2}`}>{p}</p>
             ))}
           </div>
-          <div className="story-photos reveal d3">
-            <img src={import.meta.env.BASE_URL+"photos/selfie.jpg"}  className="story-img" alt="" loading="lazy" />
-            <img src={import.meta.env.BASE_URL+"photos/embrace.jpg"} className="story-img tall" alt="" loading="lazy" />
-          </div>
         </section>
 
-        {/* ── NOSOTROS + PHOTO CAROUSEL ── */}
-        <div className="nosotros-header">
-          <span className="nosotros-eyebrow">Una historia desde 2013</span>
-          <h2 className="nosotros-title">Nosotros</h2>
-        </div>
-        <div className="photo-grid" ref={el => {
-          if (!el) return;
-          let isDown = false, startX, scrollLeft;
-          el._dragged = false;
-          el.onmousedown = e => { isDown = true; el._dragged = false; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; };
-          el.onmouseleave = () => { isDown = false; };
-          el.onmouseup = () => { isDown = false; };
-          el.onmousemove = e => { if (!isDown) return; if (Math.abs(e.pageX - el.offsetLeft - startX) > 5) el._dragged = true; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5; };
-        }} onClick={openLightbox}>
-          <img src={import.meta.env.BASE_URL+"photos/fykfreskq.jpeg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/gradok.jpeg"}        alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_7371.png"}       alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_7508.png"}       alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_7573.png"}       alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_7575.png"}       alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_7580.png"}       alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_7581.png"}       alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_7582.png"}       alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_7618.png"}       alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_7637.png"}       alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_7648.png"}       alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_copia_7573.png"} alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa01.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa02.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa03.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa04.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa05.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa06.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa07.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa08.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa09.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa10.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa11.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa12.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa13.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa14.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa15.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa16.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa17.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa18.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa19.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa20.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa21.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa22.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa23.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa24.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa25.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa26.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa27.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa28.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa29.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa30.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa31.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_wa32.jpeg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_dsc0005.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_img20220308.jpg"} alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/nos_img20220320.jpg"} alt="" loading="lazy" />
-        </div>
+        {/* ── CARRUSELES DE FOTOS ── */}
+        <PhotoCarousel
+          eyebrow="Una historia desde 2013"
+          title="Nosotros"
+          photos={nosotrosPhotos}
+          onOpen={openLightbox}
+        />
+        <PhotoCarousel
+          eyebrow="Los que nos acompañan"
+          title="Familia y Amigos"
+          photos={familiaPhotos}
+          onOpen={openLightbox}
+        />
 
-        {/* ── FAMILIA Y AMIGOS + PHOTO CAROUSEL ── */}
-        <div className="nosotros-header">
-          <span className="nosotros-eyebrow">Los que nos acompañan</span>
-          <h2 className="nosotros-title">Familia y Amigos</h2>
-        </div>
-        <div className="photo-grid" ref={el => {
-          if (!el) return;
-          let isDown = false, startX, scrollLeft;
-          el._dragged = false;
-          el.onmousedown = e => { isDown = true; el._dragged = false; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; };
-          el.onmouseleave = () => { isDown = false; };
-          el.onmouseup = () => { isDown = false; };
-          el.onmousemove = e => { if (!isDown) return; if (Math.abs(e.pageX - el.offsetLeft - startX) > 5) el._dragged = true; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5; };
-        }} onClick={openLightbox}>
-          <img src={import.meta.env.BASE_URL+"photos/fam_a0.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a1.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a2.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a20.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a21.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a22.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a24.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a26.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a27.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a28.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a29.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a3.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a32.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a36.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a38.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a39.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a4.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a40.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a41.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a42.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a43.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a44.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a45.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a46.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a47.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a48.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a49.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a5.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a50.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a51.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a52.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a53.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a6.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a8.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_a9.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_every.jpg"}  alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_every2.jpg"} alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f.jpg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f01.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f1.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f17.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f19.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f2.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f20.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_t7.jpg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_t9.jpg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_every3.jpeg"} alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f8.jpeg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f9.jpeg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f10.jpeg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f12.jpeg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f13.jpeg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f21.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f22.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f23.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f24.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f25.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f26.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f27.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f3.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f30.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f31.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f33.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f35.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f36.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f39.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f4.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f40.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f45.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f46.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f47.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f48.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f49.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f5.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f6.jpg"}     alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_f99.jpg"}    alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_t.jpg"}      alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_t10.jpeg"}   alt="" loading="lazy" />
-          <img src={import.meta.env.BASE_URL+"photos/fam_t11.jpeg"}   alt="" loading="lazy" />
-          
-        </div>
-
-        {/* ── DETALLES ── */}
+        {/* ── DETALLES        {/* ── DETALLES ── */}
         <section className="section section-center section-dark">
           <span className="eyebrow reveal">El gran día</span>
           <div className="divider center reveal d1" />
@@ -482,29 +352,30 @@ export default function App() {
           </a>
         </section>
 
-        {/* ── DRESS CODE ── */}
-        <section className="bold-section light">
-          <span className="bold-section-deco" aria-hidden="true">FK</span>
-          <div className="bold-section-content">
-            <span className="bold-eyebrow reveal">Dress Code</span>
-            <h2 className="bold-title reveal d1">{c.dressCode.style}</h2>
-            <p className="bold-text reveal d2" style={{ marginTop: "1.2rem", opacity: 0.7 }}>Para ellas</p>
-            <div className="swatches reveal d2">
-              {c.dressCode.ellas.swatches.map(col => (
-                <div key={col} className="swatch" style={{ background: col }} title={col} />
-              ))}
+        {/* ── DRESS CODE ── (solo presenciales) */}
+        {!isVirtual && (
+          <section className="bold-section light">
+            <span className="bold-section-deco" aria-hidden="true">FK</span>
+            <div className="bold-section-content">
+              <span className="bold-eyebrow reveal">Dress Code</span>
+              <h2 className="bold-title reveal d1">{c.dressCode.style}</h2>
+              <p className="bold-text reveal d2" style={{ marginTop: "1.2rem", opacity: 0.7 }}>Para ellas</p>
+              <div className="swatches reveal d2">
+                {c.dressCode.ellas.swatches.map(col => (
+                  <div key={col} className="swatch" style={{ background: col }} title={col} />
+                ))}
+              </div>
+              <PinterestLink href={c.dressCode.ellas.url} label="Ver inspiración para ellas" preview={c.dressCode.ellas.preview} />
+              <p className="bold-text reveal d3" style={{ marginTop: "1.8rem", opacity: 0.7 }}>Para ellos</p>
+              <div className="swatches reveal d3">
+                {c.dressCode.ellos.swatches.map(col => (
+                  <div key={col} className="swatch" style={{ background: col }} title={col} />
+                ))}
+              </div>
+              <PinterestLink href={c.dressCode.ellos.url} label="Ver inspiración para ellos" preview={c.dressCode.ellos.preview} />
             </div>
-            <PinterestLink href={c.dressCode.ellas.url} label="Ver inspiración para ellas" preview={c.dressCode.ellas.preview} />
-
-            <p className="bold-text reveal d3" style={{ marginTop: "1.8rem", opacity: 0.7 }}>Para ellos</p>
-            <div className="swatches reveal d3">
-              {c.dressCode.ellos.swatches.map(col => (
-                <div key={col} className="swatch" style={{ background: col }} title={col} />
-              ))}
-            </div>
-            <PinterestLink href={c.dressCode.ellos.url} label="Ver inspiración para ellos" preview={c.dressCode.ellos.preview} />
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* ── REGALOS ── */}
         <section className="section section-center section-purple">
@@ -522,9 +393,12 @@ export default function App() {
         <section className="gallery-section">
           <span className="eyebrow reveal">Comparte el momento</span>
           <div className="divider reveal d1" />
-          <h2 className="reveal d1">Galería del día</h2>
+          <h2 className="reveal d1">{isVirtual ? "Mándanos un video 🎥" : "Galería del día"}</h2>
           <p className="body-text reveal d2" style={{ marginTop: "1rem" }}>
-            ¡Queremos ver el día desde tus ojos! Sube tus fotos y videos al álbum compartido — cada recuerdo que compartas lo atesoraremos para siempre. 🤍
+            {isVirtual
+              ? "Nada nos haría más felices que recibir un video tuyo ese día — un saludo, un abrazo desde lejos, unas palabras. Ese recuerdo lo guardaremos para siempre. 🤍"
+              : "¡Queremos ver el día desde tus ojos! Sube tus fotos y videos al álbum compartido — cada recuerdo que compartas lo atesoraremos para siempre. 🤍"
+            }
           </p>
           <img
             src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(c.gallery.url)}&color=c724ff&bgcolor=ffffff`}
@@ -533,22 +407,35 @@ export default function App() {
           />
           <br />
           <a href={c.gallery.url} target="_blank" rel="noopener noreferrer" className="btn-gallery reveal d3">
-            Subir mis fotos ↗
+            {isVirtual ? "Subir mi video ↗" : "Subir mis fotos ↗"}
           </a>
           <p className="gallery-hint reveal d3">o escanea el QR con tu cámara</p>
         </section>
 
-        {/* ── RSVP ── */}
+        {/* ── RSVP / MENSAJE VIRTUAL ── */}
         <section id="rsvp" className="section section-center section-dark">
-          <span className="eyebrow reveal">¿Vas a estar?</span>
+          <span className="eyebrow reveal">{isVirtual ? "Déjanos tus palabras" : "¿Vas a estar?"}</span>
           <div className="divider center reveal d1" />
-          <h2 className="reveal d1">Confirmar asistencia</h2>
+          <h2 className="reveal d1">{isVirtual ? "Un mensaje para nosotros" : "Confirmar asistencia"}</h2>
+
+          {isVirtual && rsvpStatus !== "success" && (
+            <p className="body-text reveal d1" style={{ maxWidth: 460, margin: "1rem auto 0" }}>
+              Aunque estés lejos, tus palabras estarán con nosotros ese día. Si quieres dejarnos un mensaje de amor o de ánimo, lo guardaremos para siempre. 🤍
+            </p>
+          )}
 
           {rsvpStatus === "success" ? (
             <div className="rsvp-success">
               <p className="rsvp-success-icon">🤍</p>
               <p className="rsvp-success-title">¡Gracias, {nombre}!</p>
-              <p className="rsvp-success-text">Tu confirmación quedó guardada. ¡Nos vemos pronto!</p>
+              <p className="rsvp-success-text">
+                {isVirtual
+                  ? "Tu mensaje quedó guardado. ¡Los tendremos muy presentes!"
+                  : "Tu confirmación quedó guardada. ¡Nos vemos pronto!"}
+              </p>
+              <button className="btn-cambiar-rsvp" onClick={resetRsvp}>
+                ¿Cambió algo? Actualizar respuesta
+              </button>
             </div>
           ) : (
             <form className="rsvp-form reveal d2" onSubmit={handleRsvp}>
@@ -562,13 +449,18 @@ export default function App() {
                   required
                 />
               </div>
-              <div className="field">
-                <label>¿Asistirás?</label>
-                <select value={asiste} onChange={e => setAsiste(e.target.value)}>
-                  <option value="yes">Sí, allá estaré 🎉</option>
-                  <option value="no">No podré ir</option>
-                </select>
-              </div>
+              {!isVirtual && (
+                <div className="field">
+                  <label>¿Asistirás?</label>
+                  <select value={asiste} onChange={e => setAsiste(e.target.value)}>
+                    <option value="yes">Sí, allá estaré 🎉</option>
+                    <option value="no">No podré ir</option>
+                  </select>
+                  <p className="rsvp-hint">
+                    Si sabes con anticipación que no podrás venir, te agradecemos mucho avisarnos — nos ayuda a organizar mejor el día. 🙏
+                  </p>
+                </div>
+              )}
               <div className="field">
                 <label>Un mensaje para guardar por siempre</label>
                 <p style={{ fontSize: "0.8rem", color: "rgba(248,245,242,0.7)", lineHeight: 1.7, marginBottom: "0.6rem", textAlign: "left" }}>
@@ -586,8 +478,11 @@ export default function App() {
                   Hubo un error, intenta de nuevo.
                 </p>
               )}
+              {!isVirtual && (
+                <p className="adults-only-note">✦ Evento exclusivo para adultos</p>
+              )}
               <button type="submit" className="btn-submit" disabled={rsvpStatus === "loading"}>
-                {rsvpStatus === "loading" ? "Guardando..." : "Confirmar asistencia"}
+                {rsvpStatus === "loading" ? "Guardando..." : isVirtual ? "Enviar mensaje" : "Confirmar asistencia"}
               </button>
             </form>
           )}
@@ -615,6 +510,16 @@ export default function App() {
           <div style={{ maxWidth: 560, margin: "0 auto" }}>
             <span className="eyebrow final-eyebrow reveal">Gracias</span>
             <div className="divider final-divider reveal d1" />
+            <p className="final-text reveal d1" style={{ opacity: 0.45, fontSize: "0.72rem", marginBottom: "2rem" }}>
+              Y estos son los otros amores de nuestra vida 🐱
+            </p>
+          </div>
+          <div className="cat-carousel reveal">
+            {gatitosPhotos.map((src, i) => (
+              <img key={i} src={src} alt="" loading="lazy" onClick={() => openLightbox(gatitosPhotos, i)} />
+            ))}
+          </div>
+          <div style={{ maxWidth: 560, margin: "0 auto" }}>
             <h2 className="reveal d1">Felipe &amp; Karoll</h2>
             <p className="final-text reveal d2">{c.finalMessage}</p>
             <p className="final-text reveal d3" style={{ opacity: 0.3, fontSize: "0.72rem", marginTop: "3rem" }}>

@@ -8,7 +8,7 @@ export default function PinterestLink({ href, label, preview }) {
     >
       <span className="pinterest-link-text">{label} &rarr;</span>
       <div className="pinterest-popup">
-        <img src={preview} alt={label} className="pinterest-popup-img" />
+        <img src={import.meta.env.BASE_URL + preview} alt={label} className="pinterest-popup-img" />
         <p className="pinterest-popup-label">{label}</p>
       </div>
     </a>

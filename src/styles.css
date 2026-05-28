@@ -36,12 +36,10 @@ body {
 }
 .envelope-screen.is-exiting { opacity: 0; visibility: hidden; }
 
-.envelope-screen::after {
-  content: "";
+.envelope-floral-bottom {
   position: absolute;
   bottom: 0; left: 0; width: 100%;
-  height: clamp(100px, 16vh, 160px);
-  background: url("/floral-border-yellow.png") center bottom / cover no-repeat;
+  display: block;
   pointer-events: none;
   z-index: 0;
 }
@@ -56,7 +54,7 @@ body {
   width: min(520px, 88vw);
   text-align: center;
   animation: fadeUp 0.9s ease both;
-  padding-bottom: clamp(100px, 16vh, 160px);
+  padding-bottom: 2rem;
 }
 
 @keyframes fadeUp {
@@ -68,8 +66,9 @@ body {
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--dark);
-  opacity: 0.8;
+  color: var(--white);
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+  opacity: 1;
 }
 
 .env-guest-name {
@@ -138,6 +137,26 @@ body {
   0%, 100% { transform: translate(-50%,-50%) scale(1); }
   50%       { transform: translate(-50%,-50%) scale(1.05); }
 }
+
+.music-toggle {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.4rem;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s, transform 0.15s;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.music-toggle:hover { background: rgba(255,255,255,0.35); transform: scale(1.1); }
 
 .env-date-strip {
   font-size: 0.72rem;
@@ -923,6 +942,37 @@ h2 {
 }
 .btn-link:hover { background: var(--dark); color: var(--cream); }
 
+/* RSVP hints & notes */
+.rsvp-hint {
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  color: rgba(214,198,184,0.6);
+  line-height: 1.7;
+  text-align: left;
+  font-style: italic;
+}
+.adults-only-note {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: rgba(214,198,184,0.4);
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+.btn-cambiar-rsvp {
+  margin-top: 1.4rem;
+  background: none;
+  border: none;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: rgba(214,198,184,0.5);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+  font-family: "Montserrat", sans-serif;
+}
+.btn-cambiar-rsvp:hover { color: var(--sand); }
+
 /* RSVP success */
 .rsvp-success { margin-top: 2.5rem; }
 .rsvp-success-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
@@ -964,6 +1014,31 @@ h2 {
   color: var(--gold);
 }
 
+/* ── Cat carousel ── */
+.cat-carousel {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  padding: 0 1.5rem 2.5rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.cat-carousel img {
+  width: clamp(80px, 18vw, 130px);
+  height: clamp(80px, 18vw, 130px);
+  object-fit: cover;
+  border-radius: 50%;
+  filter: brightness(0.9);
+  cursor: pointer;
+  transition: transform 0.25s, filter 0.25s;
+  border: 2px solid rgba(163,139,109,0.3);
+}
+.cat-carousel img:hover {
+  transform: scale(1.08);
+  filter: brightness(1.05);
+}
+
 /* Final */
 .final-section {
   background: var(--dark);
@@ -974,6 +1049,46 @@ h2 {
 .final-eyebrow { color: rgba(214,198,184,0.55); }
 .final-divider { background: var(--gold); margin: 1rem auto; }
 .final-text { color: var(--sand); font-size: 0.88rem; margin-top: 1.5rem; line-height: 2; }
+
+/* ── World Clock ── */
+.world-clock {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+.wc-title {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.wc-clocks {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.wc-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.wc-flag { font-size: 2rem; line-height: 1; }
+.wc-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(248,245,242,0.5);
+}
+.wc-time {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
 
 /* ── Lightbox ── */
 .lightbox-overlay {
