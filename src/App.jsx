@@ -325,32 +325,36 @@ export default function App() {
           onOpen={openLightbox}
         />
 
-        {/* ── DETALLES        {/* ── DETALLES ── */}
+        {/* ── DETALLES ── */}
         <section className="section section-center section-dark">
           <span className="eyebrow reveal">El gran día</span>
           <div className="divider center reveal d1" />
-          <h2 className="reveal d1">{c.event.type}</h2>
-          <div className="event-card reveal d2">
-            <p><strong>{c.event.dateLongLabel}</strong></p>
-            <span className="event-time">{c.event.timeLabel}</span>
-            <p style={{ marginTop: "1.2rem" }}><strong>{c.event.placeName}</strong></p>
-            <p>{c.event.address}</p>
-            <p style={{ marginTop: "0.8rem", fontStyle: "italic", fontSize: "0.82rem", color: "rgba(248,245,242,0.5)" }}>{c.event.note}</p>
-            <Countdown />
-          </div>
+          {!isVirtual && <h2 className="reveal d1">{c.event.type}</h2>}
+          {!isVirtual && (
+            <div className="event-card reveal d2">
+              <p><strong>{c.event.dateLongLabel}</strong></p>
+              <span className="event-time">{c.event.timeLabel}</span>
+              <p style={{ marginTop: "1.2rem" }}><strong>{c.event.placeName}</strong></p>
+              <p>{c.event.address}</p>
+              <p style={{ marginTop: "0.8rem", fontStyle: "italic", fontSize: "0.82rem", color: "rgba(248,245,242,0.5)" }}>{c.event.note}</p>
+            </div>
+          )}
+          <Countdown />
         </section>
 
-        {/* ── UBICACIÓN ── */}
-        <section className="section section-center section-dark">
-          <span className="eyebrow reveal">Dónde nos vemos</span>
-          <div className="divider center reveal d1" />
-          <h2 className="reveal d1">Cómo llegar</h2>
-          <MapView />
-          <p className="body-text reveal d3">{c.location.indications}</p>
-          <a href={c.location.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn-link reveal d3">
-            Abrir en Google Maps
-          </a>
-        </section>
+        {/* ── UBICACIÓN ── (solo presenciales) */}
+        {!isVirtual && (
+          <section className="section section-center section-dark">
+            <span className="eyebrow reveal">Dónde nos vemos</span>
+            <div className="divider center reveal d1" />
+            <h2 className="reveal d1">Cómo llegar</h2>
+            <MapView />
+            <p className="body-text reveal d3">{c.location.indications}</p>
+            <a href={c.location.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn-link reveal d3">
+              Abrir en Google Maps
+            </a>
+          </section>
+        )}
 
         {/* ── DRESS CODE ── (solo presenciales) */}
         {!isVirtual && (
@@ -377,8 +381,8 @@ export default function App() {
           </section>
         )}
 
-        {/* ── REGALOS ── */}
-        <section className="section section-center section-purple">
+        {/* ── REGALOS ── (solo presenciales) */}
+        {!isVirtual && <section className="section section-center section-purple">
           <span className="eyebrow reveal">Regalos</span>
           <div className="divider reveal d1" />
           <h2 className="reveal d1">Con amor</h2>
@@ -387,7 +391,7 @@ export default function App() {
           {c.gifts.lines.map((line, i) => (
             <p key={i} className="body-text reveal d2" style={{ color: "rgba(248,245,242,0.8)", marginTop: "1rem" }}>{line}</p>
           ))}
-        </section>
+        </section>}
 
         {/* ── GALERÍA ── */}
         <section className="gallery-section">
