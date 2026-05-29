@@ -121,7 +121,7 @@ body {
 
 .nombres-btn {
   position: absolute;
-  top: 44%; left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   background: none; border: none; padding: 0;
   cursor: pointer; width: 20%; z-index: 4;
@@ -157,6 +157,79 @@ body {
   justify-content: center;
 }
 .music-toggle:hover { background: rgba(255,255,255,0.35); transform: scale(1.1); }
+
+/* ── Music player button (fixed, siempre visible) ── */
+.music-player-btn {
+  position: fixed;
+  bottom: 1.4rem;
+  right: 1.4rem;
+  z-index: 200;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(30,30,30,0.75);
+  backdrop-filter: blur(10px);
+  color: var(--cream);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}
+.music-player-btn:hover { background: rgba(50,50,50,0.9); transform: scale(1.1); }
+.music-player-btn.is-playing { border-color: var(--purple); }
+
+/* Modo inline — dentro del nav */
+.music-player-inline {
+  position: static;
+  width: 1.9rem;
+  height: 1.9rem;
+  font-size: 0.9rem;
+  background: transparent;
+  border-color: var(--cream);
+  color: var(--cream);
+  box-shadow: none;
+  backdrop-filter: none;
+  border-radius: 1px;
+}
+.music-player-inline.dark {
+  border-color: var(--dark);
+  color: var(--dark);
+}
+.music-player-inline:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
+.music-player-inline.dark:hover { background: rgba(43,43,43,0.1); }
+.music-player-inline.is-playing { border-color: var(--purple); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+/* Barras animadas cuando suena */
+.music-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+}
+.music-bars span {
+  display: block;
+  width: 3px;
+  background: var(--purple);
+  border-radius: 2px;
+  animation: musicBar 0.8s ease-in-out infinite alternate;
+}
+.music-bars span:nth-child(1) { height: 6px;  animation-delay: 0s; }
+.music-bars span:nth-child(2) { height: 14px; animation-delay: 0.2s; }
+.music-bars span:nth-child(3) { height: 9px;  animation-delay: 0.1s; }
+@keyframes musicBar {
+  from { transform: scaleY(0.4); }
+  to   { transform: scaleY(1); }
+}
 
 .env-date-strip {
   font-size: 0.72rem;
@@ -427,7 +500,7 @@ body {
   width: 100%;
   height: clamp(160px, 28vw, 260px);
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 85%;
   display: block;
   margin-bottom: 2rem;
 }
@@ -923,6 +996,12 @@ h2 {
 }
 .section-dark .field input::placeholder,
 .section-dark .field textarea::placeholder { color: rgba(248,245,242,0.3); }
+.section-dark .field input[readonly] {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(214,198,184,0.12);
+  color: rgba(248,245,242,0.5);
+  cursor: default;
+}
 .btn-submit {
   width: 100%; padding: 1rem;
   background: var(--purple); color: var(--white);
@@ -974,7 +1053,8 @@ h2 {
 .btn-cambiar-rsvp:hover { color: var(--sand); }
 
 /* RSVP success */
-.rsvp-success { margin-top: 2.5rem; }
+.rsvp-confirmed { padding-top: clamp(2.5rem, 6vh, 4rem); padding-bottom: clamp(2.5rem, 6vh, 4rem); }
+.rsvp-success { margin-top: 2rem; }
 .rsvp-success-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
 .rsvp-success-title {
   font-family: "Cormorant Garamond", serif;
@@ -1290,7 +1370,7 @@ h2 {
    RESPONSIVE
 ───────────────────────────────────────────── */
 @media (max-width: 759px) {
-  .nombres-btn { top: 47%; width: 22%; }
+  .nombres-btn { top: 50%; width: 22%; }
 
   .e1 { width: 62%; height: 42%; top: 2%; left: 1%; }
   .e2 { width: 35%; height: 35%; top: 2%; right: 1%; }
@@ -1302,5 +1382,5 @@ h2 {
 }
 
 @media (min-width: 760px) {
-  .nombres-btn { top: 44%; width: 18%; }
+  .nombres-btn { top: 50%; width: 18%; }
 }

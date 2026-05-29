@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 
-export default function MusicPlayer({ src, autoPlayTrigger }) {
+export default function MusicPlayer({ src, autoPlayTrigger, inline = false, dark = false }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -27,7 +27,7 @@ export default function MusicPlayer({ src, autoPlayTrigger }) {
     <>
       <audio ref={audioRef} src={src} loop preload="none" />
       <button
-        className={`music-player-btn${isPlaying ? " is-playing" : ""}`}
+        className={`music-player-btn${isPlaying ? " is-playing" : ""}${inline ? " music-player-inline" : ""}${dark ? " dark" : ""}`}
         onClick={toggle}
         aria-label={isPlaying ? "Pausar música" : "Reproducir música"}
         title={isPlaying ? "Pausar música" : "Reproducir música"}

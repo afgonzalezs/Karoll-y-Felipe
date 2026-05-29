@@ -56,5 +56,5 @@ export const siteContent = {
     ]
   },
   finalMessage:
-    "Creemos en compartir la vida... y no hay nada mas especial que hacerlo con ustedes. Gracias por ser parte de este capitulo. 💍"
+    "Creemos en compartir la vida... y no hay nada más especial que hacerlo con ustedes. Gracias por ser parte de este capítulo tan importante de nuestras vidas. 💍"
 };

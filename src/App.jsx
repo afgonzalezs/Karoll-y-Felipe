@@ -9,6 +9,7 @@ import EnvelopeIntro from "./components/EnvelopeIntro";
 import Countdown from "./components/Countdown";
 import MapView from "./components/MapView";
 import PinterestLink from "./components/PinterestLink";
+import MusicPlayer from "./components/MusicPlayer";
 import { db } from "./firebase";
 import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, doc, setDoc, deleteDoc } from "firebase/firestore";
 
@@ -22,12 +23,17 @@ function useReveal() {
       }),
       { threshold: 0.1 }
     );
-    document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
-    return () => obs.disconnect();
+    const observe = () =>
+      document.querySelectorAll(".reveal:not(.visible)").forEach((el) => obs.observe(el));
+    observe();
+    let raf;
+    const mut = new MutationObserver(() => { cancelAnimationFrame(raf); raf = requestAnimationFrame(observe); });
+    mut.observe(document.body, { childList: true, subtree: true });
+    return () => { obs.disconnect(); mut.disconnect(); cancelAnimationFrame(raf); };
   }, []);
 }
 
-function Nav() {
+function Nav({ musicSrc, musicTrigger }) {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 80);
@@ -37,7 +43,10 @@ function Nav() {
   return (
     <nav className={`top-nav${scrolled ? " scrolled" : ""}`}>
       <span className={`nav-brand${scrolled ? " dark" : ""}`}>F &amp; K</span>
-      <a href="#rsvp" className={`btn-nav${scrolled ? " dark" : ""}`}>Confirmar</a>
+      <div className="nav-right">
+        <MusicPlayer src={musicSrc} autoPlayTrigger={musicTrigger} inline dark={scrolled} />
+        <a href="#rsvp" className={`btn-nav${scrolled ? " dark" : ""}`}>Confirmar</a>
+      </div>
     </nav>
   );
 }
@@ -56,7 +65,7 @@ function Lightbox({ photos, startIndex, invitado, onClose }) {
   const prev = () => setIndex(i => (i - 1 + photos.length) % photos.length);
   const next = () => setIndex(i => (i + 1) % photos.length);
 
-  const photoId = (url) => btoa(encodeURIComponent(url)).replace(/[^a-zA-Z0-9]/g, "").slice(0, 40);
+  const photoId = (url) => url.split("/").pop().replace(/[^a-zA-Z0-9]/g, "");
 
   useEffect(() => {
     const onKey = (e) => {
@@ -207,6 +216,9 @@ export default function App() {
       });
       localStorage.setItem(storageKey, nombre.trim());
       setRsvpStatus("success");
+      setTimeout(() => {
+        document.querySelector(".final-section")?.scrollIntoView({ behavior: "smooth" });
+      }, 600);
     } catch {
       setRsvpStatus("error");
     }
@@ -249,7 +261,7 @@ export default function App() {
       <div className="hero-slide" style={{ backgroundImage: `url('${import.meta.env.BASE_URL}photos/engaged.jpg')`, backgroundPosition: "center top" }} />
 
       <div className={invitationClass}>
-        <Nav />
+        <Nav musicSrc={import.meta.env.BASE_URL + "song.mp3"} musicTrigger={isOpened} />
 
         {/* ── HERO (transparente — muestra las slides de fondo) ── */}
         <section className="hero-section">
@@ -417,7 +429,7 @@ export default function App() {
         </section>
 
         {/* ── RSVP / MENSAJE VIRTUAL ── */}
-        <section id="rsvp" className="section section-center section-dark">
+        <section id="rsvp" className={`section section-center section-dark${rsvpStatus === "success" ? " rsvp-confirmed" : ""}`}>
           <span className="eyebrow reveal">{isVirtual ? "Déjanos tus palabras" : "¿Vas a estar?"}</span>
           <div className="divider center reveal d1" />
           <h2 className="reveal d1">{isVirtual ? "Un mensaje para nosotros" : "Confirmar asistencia"}</h2>
@@ -442,17 +454,18 @@ export default function App() {
               </button>
             </div>
           ) : (
-            <form className="rsvp-form reveal d2" onSubmit={handleRsvp}>
+            <form className="rsvp-form" onSubmit={handleRsvp}>
               <div className="field">
-                <label>Nombre completo</label>
+                <label>Nombre</label>
                 <input
                   type="text"
                   value={nombre}
-                  onChange={e => setNombre(e.target.value)}
-                  placeholder="Tu nombre"
-                  required
+                  readOnly
                 />
               </div>
+              {!isVirtual && (
+                <p className="adults-only-note">✦ Evento exclusivo para adultos</p>
+              )}
               {!isVirtual && (
                 <div className="field">
                   <label>¿Asistirás?</label>
@@ -482,9 +495,6 @@ export default function App() {
                   Hubo un error, intenta de nuevo.
                 </p>
               )}
-              {!isVirtual && (
-                <p className="adults-only-note">✦ Evento exclusivo para adultos</p>
-              )}
               <button type="submit" className="btn-submit" disabled={rsvpStatus === "loading"}>
                 {rsvpStatus === "loading" ? "Guardando..." : isVirtual ? "Enviar mensaje" : "Confirmar asistencia"}
               </button>
@@ -495,10 +505,10 @@ export default function App() {
         {/* ── MURAL DE MENSAJES ── */}
         {mensajes.length > 0 && (
           <section className="section section-center section-dark">
-            <span className="eyebrow reveal">Sus palabras</span>
-            <div className="divider center reveal d1" />
-            <h2 className="reveal d1">Lo que nos dicen 🤍</h2>
-            <div className="mensajes-grid reveal d2">
+            <span className="eyebrow">Sus palabras</span>
+            <div className="divider center" />
+            <h2>Lo que nos dicen 🤍</h2>
+            <div className="mensajes-grid">
               {mensajes.map(m => (
                 <div key={m.id} className="mensaje-card">
                   <p className="mensaje-texto">"{m.mensaje}"</p>
