@@ -1,4 +1,25 @@
 const B = import.meta.env.BASE_URL;
+const LC = B + "photos/Lacolombia/";
+
+export const juliana_firmaLibro = [
+  "FirmaLibro.jpg", "FirmaLibro1.jpeg",
+].map(f => LC + f);
+
+export const juliana_primerConcierto = [
+  "PC_M1.jpeg", "PC_M2.jpeg", "PC_M4.jpeg",
+].map(f => LC + f);
+
+export const juliana_teatroMayor = [
+  "JMSD.jpg", "JMSD_2.jpg", "JMSD_3.jpg",
+].map(f => LC + f);
+
+export const juliana_primerMovistar = [
+  "PM_1.jpg", "PM_4.jpg", "PM_5.jpeg", "PM_6.jpeg",
+].map(f => LC + f);
+
+export const juliana_segundoMovistar = [
+  "SM_2.jpg", "SM_3.jpeg", "SM_4.jpeg", "SM_5.jpeg",
+].map(f => LC + f);
 
 export const gatitosPhotos = [
   "cat1.jpeg","cat2.jpeg","cat3.jpeg","cat4.jpeg","cat5.jpeg",

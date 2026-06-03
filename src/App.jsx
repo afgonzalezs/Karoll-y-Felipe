@@ -2,7 +2,11 @@ import { useMemo, useEffect, useState, useRef } from "react";
 import { siteContent } from "./config/siteContent";
 import { useEnvelope } from "./hooks/useEnvelope";
 import { getInvitedName, getToken, getGuest } from "./utils/getInvitedName";
-import { nosotrosPhotos, familiaPhotos, gatitosPhotos } from "./config/photos";
+import {
+  nosotrosPhotos, familiaPhotos, gatitosPhotos,
+  juliana_firmaLibro, juliana_primerConcierto, juliana_teatroMayor,
+  juliana_primerMovistar, juliana_segundoMovistar,
+} from "./config/photos";
 import WorldClock from "./components/WorldClock";
 import PhotoCarousel from "./components/PhotoCarousel";
 import EnvelopeIntro from "./components/EnvelopeIntro";
@@ -188,6 +192,7 @@ export default function App() {
   const invitedName = useMemo(() => getInvitedName(), []);
   const guest = useMemo(() => getGuest(getToken()), []);
   const isVirtual = guest.virtual === true;
+  const isJuliana = useMemo(() => getToken() === "juliana_la_colombiana", []);
   const { isUntying, isOpened, hideEnvelope, isAnimatingOpen, envelopeScreenClass, invitationClass, openInvitation } = useEnvelope();
   const [lightbox, setLightbox] = useState(null);
 
@@ -330,12 +335,63 @@ export default function App() {
           photos={nosotrosPhotos}
           onOpen={openLightbox}
         />
-        <PhotoCarousel
-          eyebrow="Los que nos acompañan"
-          title="Familia y Amigos"
-          photos={familiaPhotos}
-          onOpen={openLightbox}
-        />
+        {!isJuliana && (
+          <PhotoCarousel
+            eyebrow="Los que nos acompañan"
+            title="Familia y Amigos"
+            photos={familiaPhotos}
+            onOpen={openLightbox}
+          />
+        )}
+
+        {/* ── SECCIÓN ESPECIAL: JULIANA CON NOSOTROS ── */}
+        {isJuliana && (
+          <>
+            <section className="section section-center section-dark">
+              <span className="eyebrow reveal">Una historia que nos une</span>
+              <div className="divider center reveal d1" />
+              <h2 className="reveal d1">Juliana con nosotros</h2>
+              <p className="body-text reveal d2" style={{ color: "rgba(248,245,242,0.8)", maxWidth: 520, margin: "1.2rem auto 0" }}>
+                Desde el primer concierto en que tu voz nos enamoró, has sido parte de nuestra historia de amor. Gracias por acompañarnos en cada momento. 🤍
+              </p>
+            </section>
+
+            <PhotoCarousel
+              eyebrow="Un regalo muy especial"
+              title="La firma del libro"
+              photos={juliana_firmaLibro}
+              onOpen={openLightbox}
+            />
+
+            <PhotoCarousel
+              eyebrow="Donde todo comenzó"
+              title="El primer concierto"
+              photos={juliana_primerConcierto}
+              onOpen={openLightbox}
+            />
+
+            <PhotoCarousel
+              eyebrow="Segundo concierto · Teatro Mayor"
+              title="Julio Mario Santo Domingo"
+              photos={juliana_teatroMayor}
+              onOpen={openLightbox}
+            />
+
+            <PhotoCarousel
+              eyebrow="Con el criollo glam"
+              title="Primer Movistar Arena"
+              photos={juliana_primerMovistar}
+              onOpen={openLightbox}
+            />
+
+            <PhotoCarousel
+              eyebrow="Volvimos por más"
+              title="Segundo Movistar Arena"
+              photos={juliana_segundoMovistar}
+              onOpen={openLightbox}
+            />
+          </>
+        )}
 
         {/* ── DETALLES ── */}
         <section className="section section-center section-dark">
@@ -368,8 +424,8 @@ export default function App() {
           </section>
         )}
 
-        {/* ── DRESS CODE ── (solo presenciales) */}
-        {!isVirtual && (
+        {/* ── DRESS CODE ── (solo presenciales, no Juliana) */}
+        {!isVirtual && !isJuliana && (
           <section className="bold-section light">
             <span className="bold-section-deco" aria-hidden="true">FK</span>
             <div className="bold-section-content">
@@ -393,8 +449,8 @@ export default function App() {
           </section>
         )}
 
-        {/* ── REGALOS ── (solo presenciales) */}
-        {!isVirtual && <section className="section section-center section-purple">
+        {/* ── REGALOS ── (solo presenciales, no Juliana) */}
+        {!isVirtual && !isJuliana && <section className="section section-center section-purple">
           <span className="eyebrow reveal">Regalos</span>
           <div className="divider reveal d1" />
           <h2 className="reveal d1">Con amor</h2>
@@ -405,8 +461,8 @@ export default function App() {
           ))}
         </section>}
 
-        {/* ── GALERÍA ── */}
-        <section className="gallery-section">
+        {/* ── GALERÍA ── (no Juliana) */}
+        {!isJuliana && <section className="gallery-section">
           <span className="eyebrow reveal">Comparte el momento</span>
           <div className="divider reveal d1" />
           <h2 className="reveal d1">{isVirtual ? "Mándanos un video 🎥" : "Galería del día"}</h2>
@@ -426,7 +482,7 @@ export default function App() {
             {isVirtual ? "Subir mi video ↗" : "Subir mis fotos ↗"}
           </a>
           <p className="gallery-hint reveal d3">o escanea el QR con tu cámara</p>
-        </section>
+        </section>}
 
         {/* ── RSVP / MENSAJE VIRTUAL ── */}
         <section id="rsvp" className={`section section-center section-dark${rsvpStatus === "success" ? " rsvp-confirmed" : ""}`}>

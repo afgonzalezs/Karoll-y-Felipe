@@ -25,5 +25,6 @@ export const guests = {
   "kGEMY3FyEk": "Adiela Rodriguez",
   "9n7s8j5XoP": { nombre: "Chris y Cami", virtual: true, country: "poland" },
   "dag94VD632": { nombre: "Briter", virtual: true, country: "belgium" },
-  "abc123doremi": "Los novios"
+  "abc123doremi": "Los novios",
+  "juliana_la_colombiana": "Juliana, la colombiana"
 };
