@@ -7,6 +7,7 @@ const ZONES = {
   colombia: { label: "Colombia",  tz: "America/Bogota",    flag: "🇨🇴" },
   belgium:  { label: "Bélgica",   tz: "Europe/Brussels",   flag: "🇧🇪" },
   poland:   { label: "Polonia",   tz: "Europe/Warsaw",     flag: "🇵🇱" },
+  spain:    { label: "España",    tz: "Europe/Madrid",     flag: "🇪🇸" },
 };
 
 const fmt = (tz) =>

@@ -37,27 +37,30 @@ export const nosotrosPhotos = [
   "nos_wa16.jpeg","nos_wa17.jpeg","nos_wa18.jpeg","nos_wa19.jpeg","nos_wa20.jpeg",
   "nos_wa21.jpeg","nos_wa22.jpeg","nos_wa23.jpeg","nos_wa24.jpeg","nos_wa25.jpeg",
   "nos_wa26.jpeg","nos_wa27.jpeg","nos_wa28.jpeg","nos_wa29.jpeg","nos_wa30.jpeg",
-  "nos_wa31.jpeg","nos_wa32.jpeg",
+  "nos_wa31.jpeg","nos_wa32.jpeg", "nos_wa33.jpeg","nos_wa34.jpeg","nos_wa35.jpeg",
+  "nos_wa36.jpeg","nos_wa37.jpeg",
   "nos_dsc0005.jpg","nos_img20220308.jpg","nos_img20220320.jpg",
 ].map(f => B + "photos/" + f);
 
 export const familiaPhotos = [
   // Familia (fam_f)
-  "fam_f.jpg","fam_f01.jpg","fam_f1.jpg","fam_f2.jpg","fam_f3.jpg","fam_f4.jpg",
-  "fam_f5.jpg","fam_f6.jpg","fam_f8.jpeg","fam_f9.jpeg","fam_f10.jpeg","fam_f12.jpeg",
-  "fam_f13.jpeg","fam_f17.jpg","fam_f19.jpg","fam_f20.jpg","fam_f21.jpg","fam_f22.jpg",
-  "fam_f23.jpg","fam_f24.jpg","fam_f25.jpg","fam_f26.jpg","fam_f27.jpg","fam_f30.jpg",
-  "fam_f31.jpg","fam_f33.jpg","fam_f35.jpg","fam_f36.jpg","fam_f39.jpg","fam_f40.jpg",
+  "fam_f.jpg","fam_f01.jpg","fam_f1.jpg","fam_f30.jpg", "fam_f31.jpg","fam_f2.jpg",
+  "fam_f3.jpg","fam_f4.jpg","fam_f5.jpg","fam_f6.jpg","fam_f8.jpeg","fam_f9.jpeg",
+  "fam_f10.jpeg","fam_f12.jpeg","fam_f13.jpeg","fam_f17.jpg","fam_f19.jpg","fam_f20.jpg",
+  "fam_f21.jpg","fam_f22.jpg","fam_f23.jpg","fam_f24.jpg","fam_f25.jpg","fam_f26.jpg",
+  "fam_f27.jpg","fam_f33.jpg","fam_f35.jpg","fam_f36.jpg","fam_f39.jpg","fam_f40.jpg",
   "fam_f45.jpg","fam_f46.jpg","fam_f47.jpg","fam_f48.jpg","fam_f49.jpg","fam_f99.jpg",
   // Todos juntos (fam_every)
   "fam_every.jpg","fam_every2.jpg","fam_every3.jpeg",
   // Trabajo (fam_t)
-  "fam_t.jpg","fam_t7.jpg","fam_t9.jpg","fam_t10.jpeg","fam_t11.jpeg",
+  "fam_t.jpg","fam_t7.jpg","fam_t9.jpg","fam_t10.jpeg","fam_t11.jpeg", "fam_t12.jpeg",
   // Amigos (fam_a)
   "fam_a0.jpg","fam_a1.jpg","fam_a2.jpg","fam_a20.jpg","fam_a21.jpg","fam_a22.jpg",
   "fam_a24.jpg","fam_a26.jpg","fam_a27.jpg","fam_a28.jpg","fam_a29.jpg","fam_a3.jpg",
   "fam_a32.jpg","fam_a36.jpg","fam_a38.jpg","fam_a39.jpg","fam_a4.jpg","fam_a40.jpg",
+  "fam_a_01.jpeg","fam_a_02.jpeg","fam_a_03.jpeg","fam_a_04.jpeg","fam_a_05.jpeg",
+  "fam_a_06.jpeg","fam_a_07.jpeg","fam_a_08.jpeg",
   "fam_a41.jpg","fam_a42.jpg","fam_a43.jpg","fam_a44.jpg","fam_a45.jpg","fam_a46.jpg",
-  "fam_a47.jpg","fam_a48.jpg","fam_a49.jpg","fam_a5.jpg","fam_a50.jpg","fam_a51.jpg",
-  "fam_a52.jpg","fam_a53.jpg","fam_a6.jpg","fam_a8.jpg","fam_a9.jpg",
+  "fam_a48.jpg","fam_a49.jpg","fam_a5.jpg","fam_a50.jpg","fam_a51.jpg",
+  "fam_a52.jpg","fam_a53.jpg","fam_a6.jpg","fam_a8.jpg","fam_a9.jpg", "fam_a9.jpeg",
 ].map(f => B + "photos/" + f);
